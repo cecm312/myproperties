@@ -1,0 +1,12 @@
+{
+    "loginPage":{
+        "formName":"Iniciar Sesion",
+        "labelUsername":"Usuario",
+        "inputUsername":"Ingrese su usuario",
+        "invalidUsername":"Por favor ingrese su usuario",
+        "labelPassword":"Contraseña",
+        "inputPassword":"Ingrese su contraseña",
+        "invalidPassword":"Por favor ingrese su contraseña",
+        "buttonLogin":"Acceder"
+    }
+}
