@@ -6,12 +6,13 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, AppF, firebase, $firebaseArray,clearObjectFilter) {
+  function MainController($timeout, webDevTec, toastr, AppF, firebase, $firebaseArray, clearObjectFilter, Auth) {
+
 
     AppF.root = firebase.database().ref('/');
 
     var vm = this;
-
+    vm.Auth = Auth;
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1485298545181;
@@ -27,7 +28,7 @@
     vm.addRow = function (element) {
       vm.property[element].push({});
     }
-    vm.loading=false;
+    vm.loading = false;
 
     vm.deleteRow = function (element, index) {
       console.log(element, index, vm.property[element])
@@ -37,7 +38,7 @@
 
     vm.addElement = function (ruta) {
       console.log(ruta);
-      vm.loading=true;
+      vm.loading = true;
       var object = "";
       switch (ruta) {
         case "docType":
@@ -63,7 +64,7 @@
             vm.newSaleType = {};
             break;
         }
-        vm.loading=false;
+        vm.loading = false;
       });
     }
 
