@@ -17,18 +17,51 @@
 
     $locationProvider.html5Mode(true);
     $stateProvider
-      .state('home', {
-        url: '/',
+      .state('admin', {
+        url: '/admin',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main',
         resolve: {
-          // controller will not be loaded until $requireSignIn resolves
-          // Auth refers to our $firebaseAuth wrapper in the factory below
-          "currentAuth": ["Auth", function (Auth) {
-            // $requireSignIn returns a promise so the resolve waits for it to complete
-            // If the promise is rejected, it will throw a $stateChangeError (see above)
-            return Auth.$requireSignIn();
+          "currentAuthF": ["AuthF", function (AuthF) {
+            return AuthF.$requireSignIn();
+          }]
+        }
+      })
+      .state('admin.properties', {
+        url: '/properties',
+        views: {
+          'content@admin': {
+            templateUrl: function () {
+              return 'app/main/views/propertiesRecords/propertiesRecords.html';
+            },
+            controller: 'PropertiesRecordsController',
+            controllerAs: 'propertiesCtrl'
+          }
+        },
+        resolve: {
+          "currentAuthF": ["AuthF", function (AuthF) {
+            return AuthF.$requireSignIn();
+          }]
+        }
+      })
+      .state('admin.properties.details', {
+        url: '/details',
+        params:{
+          property:false
+        },
+        views: {
+          'content@admin': {
+            templateUrl: function () {
+              return 'app/main/views/propertiesRecord/propertiesRecord.html';
+            },
+            controller: 'PropertiesRecordController',
+            controllerAs: 'propertyCtrl'
+          }
+        },
+        resolve: {
+          "currentAuthF": ["AuthF", function (AuthF) {
+            return AuthF.$requireSignIn();
           }]
         }
       })
@@ -39,7 +72,7 @@
         controller: 'LoginController',
         controllerAs: 'main'
       });
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/admin/properties');
   }
 
 })();

@@ -1,0 +1,171 @@
+<md-content layout-padding="layout-padding">
+  <div flex layout="row" layout-align="start center">
+    <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertyCtrl.goBack()">
+      <md-icon>keyboard_backspace </md-icon>
+    </md-button>
+    <h1 flex="nogrow">Detalles de Propiedad</h1>
+  </div>
+  <form name="propertyForm">
+    <div layout="column" layout-gt-xs="row">
+      <md-input-container flex>
+        <label>Ubicacion</label>
+        <input type="text" required ng-model="propertyCtrl.property.location">
+      </md-input-container>
+    </div>
+    <div layout="column" layout-gt-xs="row">
+      <md-input-container flex="30">
+        <label>M2</label>
+        <input required type="number" ng-model="propertyCtrl.property.meters">
+      </md-input-container>
+      <md-input-container flex="70">
+        <label>Referencia mas cercana</label>
+        <input type="text" ng-model="propertyCtrl.property.closerReference">
+      </md-input-container>
+    </div>
+    <!--<div layout="row" layout-align="start center">
+      <div flex="nogrow">
+        <label>Imagenes</label>
+      </div>
+      <md-button class="md-raised md-primary">Agregar Imagen</md-button>
+    </div>
+    <div flex>
+      <md-grid-list md-cols-sm="1" md-cols-sm="2" md-cols-md="3" md-cols-lg="4" md-cols-gt-lg="5" md-row-height="4:3">
+        <md-grid-tile md-colspan="1">
+          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
+            alt="Washed Out">
+        </md-grid-tile>
+        <md-grid-tile md-colspan="1">
+          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
+            alt="Washed Out">
+        </md-grid-tile>
+        <md-grid-tile md-colspan="1">
+          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
+            alt="Washed Out">
+        </md-grid-tile>
+        <md-grid-tile md-colspan="1">
+          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
+            alt="Washed Out">
+        </md-grid-tile>
+      </md-grid-list>
+    </div>-->
+    <!--<div layout="column" layout-gt-xs="row">
+      <md-card flex="50">
+        <img ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
+          alt="Washed Out">
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Favorite">
+              <md-icon>keyboard_backspace</md-icon>
+            </md-button>
+          </md-card-actions>
+      </md-card>
+      <md-card flex="50">
+        <img ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
+          alt="Washed Out">
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Favorite">
+              <md-icon>keyboard_backspace</md-icon>
+            </md-button>
+          </md-card-actions>
+      </md-card>
+    </div>-->
+    <div layout="column" layout-gt-xs="row">
+      <md-input-container flex>
+        <label>Campo Libre</label>
+        <input type="text" ng-model="propertyCtrl.property.otherpublic">
+      </md-input-container>
+    </div>
+    <div layout="column" layout-gt-xs="row">
+      <md-input-container flex>
+        <label>Tipo de documento</label>
+        <md-select required ng-model="propertyCtrl.property.docType">
+          <md-option ng-repeat="docType in main.FBF.docTypes" ng-value="docType.$id">{{docType.name}}</md-option>
+          <md-option value="add">Agregar nuevo</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex>
+        <label>Precio Pactado</label>
+        <input required type="number" ng-model="propertyCtrl.property.price">
+      </md-input-container>
+      <md-input-container flex>
+        <label>Precio Venta</label>
+        <input required type="number" ng-model="propertyCtrl.property.salePrice">
+      </md-input-container>
+    </div>
+    <div layout="column" layout-gt-xs="row" ng-if="propertyCtrl.addingDocType">
+      <md-input-container flex>
+        <label>Nuevo tipo de documento</label>
+        <input type="name" ng-model="propertyCtrl.newDocType.name">
+        <md-button class="md-raised md-primary" ng-disabled="main.F.loading" ng-click="propertyCtrl.addElement('docType')">Agregar nuevo tipo de documento</md-button>
+        <md-button class="md-raised md-primary" ng-disabled="main.F.loading" ng-click="propertyCtrl.addingDocType=false">Cancelar</md-button>
+      </md-input-container>
+    </div>
+    <div layout="row" layout-align="start center">
+      <div flex="nogrow">
+        <label>Propietario</label>
+      </div>
+      <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('owners')">Agregar Propietario</md-button>
+    </div>
+    <div layout="column">
+      <div flex layout="column" layout-gt-xs="row" layout ng-repeat="($index,owner) in propertyCtrl.property.owners">
+        <md-input-container flex>
+          <label>Nombre</label>
+          <input required type="name" ng-model="owner.name">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Telefono</label>
+          <input required type="text" ng-model="owner.phone">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Correo</label>
+          <input type="email" ng-model="owner.email">
+        </md-input-container>
+        <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('owners',$index)">Eliminar</md-button>
+      </div>
+    </div>
+    <div layout layout-sm="column" layout-align="start center">
+      <div flex="nogrow">
+        <label>Intermediarios</label>
+      </div>
+      <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('intermediaries')">Agregar Intermediario</md-button>
+    </div>
+    <div layout="column">
+      <div flex layout="column" layout-gt-xs="row" ng-repeat="($index,intermediary) in propertyCtrl.property.intermediaries">
+        <md-input-container flex>
+          <label>Nombre</label>
+          <input required type="name" ng-model="intermediary.name">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Telefono</label>
+          <input required type="text" ng-model="intermediary.phone">
+        </md-input-container>
+        <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('intermediaries',$index)">Eliminar</md-button>
+      </div>
+    </div>
+    <div layout="column" layout-gt-xs="row">
+      <md-input-container flex="30">
+        <label>Tipo de venta</label>
+        <md-select required ng-model="propertyCtrl.property.saleType">
+          <md-option ng-repeat="saleType in main.FBF.saleTypes" ng-value="saleType.$id">{{saleType.name}}</md-option>
+          <md-option value="add">Agregar nuevo</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="70">
+        <label>Campo Libre</label>
+        <input type="text" ng-model="propertyCtrl.property.otherprivate">
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column" ng-if="propertyCtrl.addingSaleType">
+      <md-input-container flex>
+        <label>Nuevo Tipo de venta</label>
+        <input type="name" ng-model="propertyCtrl.newSaleType.name">
+        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addElement('saleType')" ng-disabled="main.F.loading">Agregar nuevo tipo de venta</md-button>
+        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addingSaleType=false" ng-disabled="main.F.loading">Cancelar</md-button>
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+      <label flex></label>
+      <md-button ng-disabled="!propertyForm.$valid" flex="nogrow" ng-click="propertyCtrl.saveProperty(propertyCtrl.property)" class="md-raised md-primary">Guardar Propiedad</md-button>
+      <md-button flex="nogrow" ng-click="propertyCtrl.goBack()" class="md-raised md-primary">Cancelar</md-button>
+    </div>
+  </form>
+</md-content>
