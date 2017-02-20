@@ -26,7 +26,7 @@
     </div>
     <div layout="column" layout-align="start start">
       <div flex layout="row" layout-align="start center">
-        <label flex="nogrow">Imagenes</label>
+        <h3 flex="nogrow">Imagenes</h3>
         <div flex="nogrow">
           <md-button class="md-raised md-primary" ngf-select ng-model="propertyCtrl.files" name="files" ngf-multiple="true" ngf-pattern="'image/*'"
             ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Agregar Imagenes</md-button>
@@ -63,7 +63,7 @@
     </div>
     <div layout="column" layout-align="start start">
       <div flex layout="row" layout-align="start center">
-        <label flex="nogrow">Mapa</label>
+        <h3 flex="nogrow">Mapa</h3>
       </div>
     </div>
     <div layout="column" layout-gt-xs="row">
@@ -111,7 +111,7 @@
     </div>
     <div layout="row" layout-align="start center">
       <div flex="nogrow">
-        <label>Propietario</label>
+        <h3>Propietario</h3>
       </div>
       <div flex="nogrow">
         <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('owners')">Agregar Propietario</md-button>
@@ -138,7 +138,7 @@
     </div>
     <div layout layout-align="start center">
       <div flex="nogrow">
-        <label>Intermediarios</label>
+        <h3>Intermediarios</h3>
       </div>
       <div flex="nogrow">
         <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('intermediaries')">Agregar Intermediario</md-button>
