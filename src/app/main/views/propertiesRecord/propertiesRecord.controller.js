@@ -21,9 +21,17 @@
       owners: [{}],
       intermediaries: []
     };
-
+    vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCyA-BPAOyFhVGBMCXS9fB5Yc6Dioh2360";
     vm.deleteImage = function (index, array) {
       array.splice(index, 1);
+    }
+    vm.addMarker = function (event) {
+      var ll = event.latLng;
+      vm.property.gps = {
+        lat: ll.lat(),
+        lng: ll.lng()
+      }
+
     }
     vm.goBack = function () {
       AppF.go("admin.properties");

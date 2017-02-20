@@ -66,10 +66,17 @@
         <label flex="nogrow">Mapa</label>
       </div>
     </div>
-    <div flex>
-      <ng-map center="37.7699298, -122.4469157" zoom="12" on-click="vm.addMarker()">
-        <marker ng-repeat="pos in vm.positions" position="{{pos.lat}}, {{pos.lng}}"></marker>
-      </ng-map>
+    <div layout="column" layout-gt-xs="row">
+      <div flex>
+        <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{propertyCtrl.googleMapsUrl}}" height="600px">
+          <ng-map center="current-location" zoom="9"  on-click="propertyCtrl.addMarker()">
+              <marker position="{{propertyCtrl.property.gps.lat}},{{propertyCtrl.property.gps.lng}}"></marker>
+          </ng-map>
+        </div>
+      </div>
+      <div flex>
+
+      </div>
     </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
