@@ -1,7 +1,9 @@
 <md-content layout="column" layout-padding="layout-padding">
   <div flex layout="row" layout-align="start center">
     <h1 flex="nogrow">Lista de propiedades</h1>
-    <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertiesCtrl.go()">Añadir Propiedad</md-button>
+    <div flex="nogrow">
+      <md-button class="md-raised md-primary" ng-click="propertiesCtrl.go()">Añadir Propiedad</md-button>
+    </div>
   </div>
   <md-list flex>
     <md-list-item class="md-3-line" ng-repeat="property in main.FBF.properties" ng-click="null">
@@ -11,7 +13,7 @@
           <p>{{ property.closerReference}}</p>
         </div>
         <div flex="nogrow">
-          <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertiesCtrl.go(property)">Editar</md-button>
+          <md-button class="md-raised md-primary" ng-click="propertiesCtrl.go(property)">Editar</md-button>
         </div>
       </div>
     </md-list-item>

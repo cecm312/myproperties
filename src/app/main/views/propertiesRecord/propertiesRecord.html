@@ -1,8 +1,10 @@
 <md-content layout-padding="layout-padding">
   <div flex layout="row" layout-align="start center">
-    <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertyCtrl.goBack()">
-      <md-icon>keyboard_backspace </md-icon>
-    </md-button>
+    <div flex="nogrow">
+      <md-button class="md-icon-button" aria-label="Go Back" ng-click="propertyCtrl.goBack()">
+        <md-icon>keyboard_backspace </md-icon>
+      </md-button>
+    </div>
     <h1 flex="nogrow">Detalles de Propiedad</h1>
   </div>
   <form name="propertyForm">
@@ -22,52 +24,53 @@
         <input type="text" ng-model="propertyCtrl.property.closerReference">
       </md-input-container>
     </div>
-    <!--<div layout="row" layout-align="start center">
-      <div flex="nogrow">
-        <label>Imagenes</label>
+    <div layout="column" layout-align="start start">
+      <div flex layout="row" layout-align="start center">
+        <label flex="nogrow">Imagenes</label>
+        <div flex="nogrow">
+          <md-button class="md-raised md-primary" ngf-select ng-model="propertyCtrl.files" name="files" ngf-multiple="true" ngf-pattern="'image/*'"
+            ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Agregar Imagenes</md-button>
+        </div>
       </div>
-      <md-button class="md-raised md-primary">Agregar Imagen</md-button>
     </div>
     <div flex>
-      <md-grid-list md-cols-sm="1" md-cols-sm="2" md-cols-md="3" md-cols-lg="4" md-cols-gt-lg="5" md-row-height="4:3">
-        <md-grid-tile md-colspan="1">
-          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
-            alt="Washed Out">
+      <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-lg="4" md-cols-gt-lg="5" md-row-height="4:3" md-gutter="1em">
+        <md-grid-tile md-colspan="1" ng-repeat="($index,file) in propertyCtrl.files">
+          <img class="layout-fill" ng-show="propertyForm.files.$valid" ngf-thumbnail="file">
+          <md-grid-tile-footer layout="row" layout-align="end center">
+            <div flex>
+              <div layout="row" layout-align="end center">
+                <div flex="nogrow">
+                  <md-button ng-click="propertyCtrl.deleteImage($index,propertyCtrl.files)" class="md-fab md-mini md-warn md-raised md-hue-2">
+                    <md-icon>delete_forever</md-icon>
+                  </md-button>
+                </div>
+              </div>
+            </div>
+          </md-grid-tile-footer>
         </md-grid-tile>
-        <md-grid-tile md-colspan="1">
-          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
-            alt="Washed Out">
-        </md-grid-tile>
-        <md-grid-tile md-colspan="1">
-          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
-            alt="Washed Out">
-        </md-grid-tile>
-        <md-grid-tile md-colspan="1">
-          <img width="100%" ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
-            alt="Washed Out">
+        <md-grid-tile md-colspan="1" ng-repeat="($index,image) in propertyCtrl.property.images">
+          <img class="layout-fill" ng-src="{{image.url}}" alt="Imagen">
+          <md-grid-tile-footer layout="row" layout-align="end center">
+            <div flex="nogrow">
+              <md-button ng-click="propertyCtrl.deletePropertyImage(image,propertyCtrl.property.$id)" class="md-fab md-mini md-warn md-raised md-hue-2">
+                <md-icon>delete_forever</md-icon>
+              </md-button>
+            </div>
+          </md-grid-tile-footer>
         </md-grid-tile>
       </md-grid-list>
-    </div>-->
-    <!--<div layout="column" layout-gt-xs="row">
-      <md-card flex="50">
-        <img ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
-          alt="Washed Out">
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon>keyboard_backspace</md-icon>
-            </md-button>
-          </md-card-actions>
-      </md-card>
-      <md-card flex="50">
-        <img ng-src="http://www.imagenes-bonitas.net/wp-content/uploads/2014/01/Imagen-bonita-luz-de-hada.jpg" class="md-card-image"
-          alt="Washed Out">
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon>keyboard_backspace</md-icon>
-            </md-button>
-          </md-card-actions>
-      </md-card>
-    </div>-->
+    </div>
+    <div layout="column" layout-align="start start">
+      <div flex layout="row" layout-align="start center">
+        <label flex="nogrow">Mapa</label>
+      </div>
+    </div>
+    <div flex>
+      <ng-map center="37.7699298, -122.4469157" zoom="12" on-click="vm.addMarker()">
+        <marker ng-repeat="pos in vm.positions" position="{{pos.lat}}, {{pos.lng}}"></marker>
+      </ng-map>
+    </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
         <label>Campo Libre</label>
@@ -103,7 +106,9 @@
       <div flex="nogrow">
         <label>Propietario</label>
       </div>
-      <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('owners')">Agregar Propietario</md-button>
+      <div flex="nogrow">
+        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('owners')">Agregar Propietario</md-button>
+      </div>
     </div>
     <div layout="column">
       <div flex layout="column" layout-gt-xs="row" layout ng-repeat="($index,owner) in propertyCtrl.property.owners">
@@ -119,14 +124,18 @@
           <label>Correo</label>
           <input type="email" ng-model="owner.email">
         </md-input-container>
-        <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('owners',$index)">Eliminar</md-button>
+        <div flex="nogrow">
+          <md-button class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('owners',$index)">Eliminar</md-button>
+        </div>
       </div>
     </div>
-    <div layout layout-sm="column" layout-align="start center">
+    <div layout layout-align="start center">
       <div flex="nogrow">
         <label>Intermediarios</label>
       </div>
-      <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('intermediaries')">Agregar Intermediario</md-button>
+      <div flex="nogrow">
+        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('intermediaries')">Agregar Intermediario</md-button>
+      </div>
     </div>
     <div layout="column">
       <div flex layout="column" layout-gt-xs="row" ng-repeat="($index,intermediary) in propertyCtrl.property.intermediaries">
@@ -138,7 +147,9 @@
           <label>Telefono</label>
           <input required type="text" ng-model="intermediary.phone">
         </md-input-container>
-        <md-button flex="nogrow" class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('intermediaries',$index)">Eliminar</md-button>
+        <div flex="nogrow">
+          <md-button class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('intermediaries',$index)"> Eliminar </md-button>
+        </div>
       </div>
     </div>
     <div layout="column" layout-gt-xs="row">
@@ -162,10 +173,15 @@
         <md-button class="md-raised md-primary" ng-click="propertyCtrl.addingSaleType=false" ng-disabled="main.F.loading">Cancelar</md-button>
       </md-input-container>
     </div>
-    <div layout layout-sm="column">
+    <div layout="row" layout-sm="column">
       <label flex></label>
-      <md-button ng-disabled="!propertyForm.$valid" flex="nogrow" ng-click="propertyCtrl.saveProperty(propertyCtrl.property)" class="md-raised md-primary">Guardar Propiedad</md-button>
-      <md-button flex="nogrow" ng-click="propertyCtrl.goBack()" class="md-raised md-primary">Cancelar</md-button>
+      <div flex="nogrow">
+        <md-button ng-disabled="!propertyForm.$valid || main.F.loading" ng-click="propertyCtrl.saveProperty(propertyCtrl.property,propertyCtrl.files)"
+          class="md-raised md-primary">{{propertyCtrl.saveText}}</md-button>
+      </div>
+      <div flex="nogrow">
+        <md-button ng-click="propertyCtrl.goBack()" class="md-raised md-primary">Cancelar</md-button>
+      </div>
     </div>
   </form>
 </md-content>

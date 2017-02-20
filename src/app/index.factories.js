@@ -5,10 +5,15 @@
     .module('myproperties')
     .factory("AuthF", AuthF)
     .factory("AppF", AppF)
-    .factory("FirebaseF", FirebaseF);
+    .factory("FirebaseF", FirebaseF)
+    .factory("FbStorage", FbStorage);
 
   function AuthF($firebaseAuth) {
     return $firebaseAuth();
+  }
+
+  function FbStorage(firebase) {
+    return firebase.storage().ref();
   }
 
   function AppF($state, firebase) {
@@ -26,10 +31,26 @@
     return obj;
   }
 
-  function FirebaseF($firebaseArray, AppF) {
+  function FirebaseF($firebaseArray, AppF, firebase) {
     var obj = {
-      loadList: loadList
+      loadList: loadList,
+      prepareObject: prepareObject
     };
+
+    function prepareObject(obj) {
+      if (angular.isUndefined(obj.saved)) {
+        obj.saved = {
+          date: firebase.database.ServerValue.TIMESTAMP,
+          user: firebase.auth().currentUser.uid
+        }
+      } else {
+        obj.updated = {
+          date: firebase.database.ServerValue.TIMESTAMP,
+          user: firebase.auth().currentUser.uid
+        }
+      }
+      return obj;
+    }
 
     function loadNode(node) {
       if (angular.isUndefined(obj[node])) obj[node] = $firebaseArray(AppF.root.child(node));

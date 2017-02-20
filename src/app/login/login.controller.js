@@ -21,7 +21,7 @@
       vm.error = null;
       auth.$signInWithEmailAndPassword(vm.formData.email, vm.formData.password).then(function (firebaseUser) {
         vm.firebaseUser = firebaseUser;
-        $state.go("home");
+        $state.go("admin");
       }).catch(function (error) {
         vm.error = error;
         $log.log(error);

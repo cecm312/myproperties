@@ -8,10 +8,11 @@
         <span>Panel de Administracion</span>
       </h2>
       <span flex></span>
-      <md-button flex="nogrow" ng-click="main.AuthF.$signOut()">
-        <md-icon>exit_to_app </md-icon>
-      </md-button>
-      <span flex></span>
+      <div flex="nogrow">
+        <md-button ng-click="main.AuthF.$signOut()">
+          <md-icon>exit_to_app </md-icon>
+        </md-button>
+      </div>
     </div>
   </md-toolbar>
   <div ui-view="content"></div>
