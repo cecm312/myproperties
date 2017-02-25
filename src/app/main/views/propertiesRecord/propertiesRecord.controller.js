@@ -6,8 +6,9 @@
     .controller('PropertiesRecordController', PropertiesRecordController);
 
   /** @ngInject */
-  function PropertiesRecordController($scope, AppF, clearObjectFilter, toastr, $state, FirebaseF, $log, FbStorage, $q, fileExtensionFilter) {
+  function PropertiesRecordController($scope, $mdDialog, AppF, clearObjectFilter, toastr, $state, FirebaseF, $log, FbStorage, $q, fileExtensionFilter) {
     var vm = this;
+    vm.editGps = false;
     var init = function () {
       if ($state.params.property) {
         vm.property = $state.params.property;
@@ -16,6 +17,45 @@
       }
       FirebaseF.loadList(["saleTypes", "docTypes"])
     }
+
+    vm.openAddDialog = function (obj) {
+      var title = "";
+      switch (obj.object) {
+        case "saleType":
+          title = "Añadir nuevo tipo de venta";
+          break;
+        case "docType":
+          title = "Añadir nuevo tipo de documento";
+          break;
+      }
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.prompt()
+        .title(title)
+        .placeholder('Nombre')
+        .ariaLabel(title)
+        .ok('Aceptar')
+        .cancel('Cancelar');
+
+      $mdDialog.show(confirm).then(function (result) {
+        var objToSave = {
+          name: result
+        };
+        vm.addElement(objToSave, obj);
+      });
+    };
+
+    vm.addElement = function (object, localReferences) {
+      AppF.loading = true;
+      object = FirebaseF.prepareObject(object);
+      //console.log(object, localReferences.reference)
+      AppF.root.child(localReferences.reference).push(object).then(function (snap) {
+        var id = snap.key;
+        vm.property[localReferences.object] = id;
+        AppF.loading = false;
+        toastr.info("Se añadio elemento con exito");
+      });
+    }
+
     vm.saveText = "Guardar Propiedad";
     vm.blancProperty = {
       owners: [{}],
@@ -26,12 +66,13 @@
       array.splice(index, 1);
     }
     vm.addMarker = function (event) {
-      var ll = event.latLng;
-      vm.property.gps = {
-        lat: ll.lat(),
-        lng: ll.lng()
+      if (vm.editGps) {
+        var ll = event.latLng;
+        vm.property.gps = {
+          lat: ll.lat(),
+          lng: ll.lng()
+        }
       }
-
     }
     vm.goBack = function () {
       AppF.go("admin.properties");
@@ -42,35 +83,7 @@
     vm.deleteRow = function (element, index) {
       vm.property[element].splice(index, 1);
     }
-    vm.addElement = function (ruta) {
-      AppF.loading = true;
-      var object = "";
-      switch (ruta) {
-        case "docType":
-          object = "newDocType"
-          break;
-        case "saleType":
-          object = "newSaleType"
-          break;
-      }
-      vm[object] = FirebaseF.prepareObject(vm[object]);
-      AppF.root.child(ruta + "s").push(vm[object]).then(function (snap) {
-        var id = snap.key;
-        switch (ruta) {
-          case "docType":
-            vm.property.docType = id;
-            vm.addingDocType = false;
-            vm.newDocType = {};
-            break;
-          case "saleType":
-            vm.property.saleType = id;
-            vm.addingSaleType = false;
-            vm.newSaleType = {};
-            break;
-        }
-        AppF.loading = false;
-      });
-    }
+
     vm.deletePropertyImage = function (imageObj, propertyId) {
       // Create a reference to the file to delete
       var image = FbStorage.child('images/' + propertyId + '/' + imageObj.name);
@@ -183,23 +196,16 @@
       });
     }
 
-    $scope.$watch(function () {
-      return vm.property.saleType;
-    }, function (current) {
-      if (current && current == "add") {
-        vm.addingSaleType = true;
-        delete vm.property.saleType;
+    vm.verifyAddOption = function (element) {
+      if (typeof (element) == "object") {
+        if (element.action == "add") {
+          delete vm.property[element.object];
+          vm.openAddDialog(element);
+        }
       }
-    });
 
-    $scope.$watch(function () {
-      return vm.property.docType;
-    }, function (current) {
-      if (current && current == "add") {
-        vm.addingDocType = true;
-        delete vm.property.docType;
-      }
-    });
+
+    };
 
     init();
 

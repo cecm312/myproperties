@@ -7,6 +7,9 @@
     </div>
     <h1 flex="nogrow">Detalles de Propiedad</h1>
   </div>
+  <div flex layout="row" layout-align="start center">
+    <h2>Informacion Publica</h2>
+  </div>
   <form name="propertyForm">
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
@@ -70,6 +73,9 @@
     <div layout="column" layout-align="start start">
       <div flex layout="row" layout-align="start center">
         <h3 flex="nogrow">Mapa</h3>
+        <div flex="nogrow">
+          <md-button class="md-raised md-primary" ng-click="propertyCtrl.editGps=!propertyCtrl.editGps">{{propertyCtrl.editGps?'Guardar':'Editar Ubicacion'}}</md-button>
+        </div>
       </div>
     </div>
     <div layout="column" layout-gt-xs="row">
@@ -81,12 +87,15 @@
         </div>
       </div>
     </div>
+    <div flex layout="row" layout-align="start center">
+      <h2>Informacion Privada</h2>
+    </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
         <label>Tipo de documento</label>
-        <md-select required ng-model="propertyCtrl.property.docType">
+        <md-select required ng-model="propertyCtrl.property.docType" ng-change="propertyCtrl.verifyAddOption(propertyCtrl.property.docType,this)">
           <md-option ng-repeat="docType in main.FBF.docTypes" ng-value="docType.$id">{{docType.name}}</md-option>
-          <md-option value="add">Agregar nuevo</md-option>
+          <md-option ng-value="{action:'add',object:'docType',reference:'docTypes'}">Agregar nuevo</md-option>
         </md-select>
       </md-input-container>
       <md-input-container flex>
@@ -96,14 +105,6 @@
       <md-input-container flex>
         <label>Precio Venta</label>
         <input required type="number" ng-model="propertyCtrl.property.salePrice">
-      </md-input-container>
-    </div>
-    <div layout="column" layout-gt-xs="row" ng-if="propertyCtrl.addingDocType">
-      <md-input-container flex>
-        <label>Nuevo tipo de documento</label>
-        <input type="name" ng-model="propertyCtrl.newDocType.name">
-        <md-button class="md-raised md-primary" ng-disabled="main.F.loading" ng-click="propertyCtrl.addElement('docType')">Agregar nuevo tipo de documento</md-button>
-        <md-button class="md-raised md-primary" ng-disabled="main.F.loading" ng-click="propertyCtrl.addingDocType=false">Cancelar</md-button>
       </md-input-container>
     </div>
     <div layout="row" layout-align="start center">
@@ -159,9 +160,9 @@
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex="30">
         <label>Tipo de venta</label>
-        <md-select required ng-model="propertyCtrl.property.saleType">
+        <md-select required ng-model="propertyCtrl.property.saleType" ng-change="propertyCtrl.verifyAddOption(propertyCtrl.property.saleType,this)">
           <md-option ng-repeat="saleType in main.FBF.saleTypes" ng-value="saleType.$id">{{saleType.name}}</md-option>
-          <md-option value="add">Agregar nuevo</md-option>
+          <md-option ng-value="{action:'add',object:'saleType',reference:'saleTypes'}">Agregar nuevo</md-option>
         </md-select>
       </md-input-container>
       <md-input-container flex="70">
@@ -169,14 +170,14 @@
         <input type="text" ng-model="propertyCtrl.property.otherprivate">
       </md-input-container>
     </div>
-    <div layout layout-sm="column" ng-if="propertyCtrl.addingSaleType">
+    <!--<div layout layout-sm="column" ng-if="propertyCtrl.addingSaleType">
       <md-input-container flex>
         <label>Nuevo Tipo de venta</label>
         <input type="name" ng-model="propertyCtrl.newSaleType.name">
         <md-button class="md-raised md-primary" ng-click="propertyCtrl.addElement('saleType')" ng-disabled="main.F.loading">Agregar nuevo tipo de venta</md-button>
         <md-button class="md-raised md-primary" ng-click="propertyCtrl.addingSaleType=false" ng-disabled="main.F.loading">Cancelar</md-button>
       </md-input-container>
-    </div>
+    </div>-->
     <div layout="row" layout-sm="column">
       <label flex></label>
       <div flex="nogrow">
