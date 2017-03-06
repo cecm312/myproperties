@@ -17,6 +17,24 @@
 
     $locationProvider.html5Mode(true);
     $stateProvider
+      .state('home', {
+        url: '/',
+        templateUrl: 'app/public/public.html',
+        controller: 'PublicController',
+        controllerAs: 'main'
+      })
+      .state('home.map', {
+        url: 'map',
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/map/map.html';
+            },
+            controller: 'MapController',
+            controllerAs: 'mapCtrl'
+          }
+        }
+      })
       .state('admin', {
         url: '/admin',
         templateUrl: 'app/main/main.html',
@@ -47,9 +65,9 @@
       })
       .state('admin.properties.details', {
         url: '/details/:propertyId',
-        params:{
-          property:false,
-          propertyId:null
+        params: {
+          property: false,
+          propertyId: null
         },
         views: {
           'content@admin': {
@@ -73,7 +91,7 @@
         controller: 'LoginController',
         controllerAs: 'main'
       });
-    $urlRouterProvider.otherwise('/admin/properties');
+    $urlRouterProvider.otherwise('/map');
   }
 
 })();

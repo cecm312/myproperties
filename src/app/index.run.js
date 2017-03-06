@@ -22,9 +22,7 @@
     auth.onAuthStateChanged(function (firebaseUser) {
       if (firebaseUser) {
         //console.log("Signed in as:", firebaseUser.uid);
-      } else {
-        $state.go("login");
-      }
+      } 
     });
   }
 

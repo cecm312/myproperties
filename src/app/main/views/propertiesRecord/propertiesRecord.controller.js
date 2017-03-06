@@ -112,11 +112,12 @@
       });
     }
 
-    function saveProperty(property, propertyPrivate, files) {
+    function saveProperty(property, propertyPrivate) {
       AppF.loading = true;
       vm.saveText = "Guardando...";
       savePropertyFB(property, propertyPrivate).then(function (data) {
         toastr.info("Se guardo la propiedad");
+        $log.log(data);
         AppF.loading = false;
         vm.goBack();
       }, function (error) {
