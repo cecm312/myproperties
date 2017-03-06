@@ -8,17 +8,30 @@
   /** @ngInject */
   function PropertiesRecordController($scope, $mdDialog, AppF, clearObjectFilter, toastr, $state, FirebaseF, $log, FbStorage, $q, fileExtensionFilter) {
     var vm = this;
+    //variables
     vm.editGps = false;
-    var init = function () {
-      if ($state.params.property) {
-        vm.property = $state.params.property;
-      } else {
-        vm.property = vm.blancProperty;
-      }
-      FirebaseF.loadList(["saleTypes", "docTypes"])
-    }
+    vm.saveText = "Guardar Propiedad";
+    vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCyA-BPAOyFhVGBMCXS9fB5Yc6Dioh2360";
+    vm.blancProperty = {};
+    vm.blancPropertyPrivate = {
+      owners: [{}],
+      intermediaries: []
+    };
 
-    vm.openAddDialog = function (obj) {
+    //functions in scope
+    vm.openAddDialog = openAddDialog;
+    vm.addElement = addElement;
+    vm.deleteImage = deleteImage;
+    vm.addMarker = addMarker;
+    vm.goBack = goBack;
+    vm.addRow = addRow;
+    vm.deleteRow = deleteRow;
+    vm.deletePropertyImage = deletePropertyImage;
+    vm.saveProperty = saveProperty
+    vm.verifyAddOption = verifyAddOption
+
+
+    function openAddDialog(obj) {
       var title = "";
       switch (obj.object) {
         case "saleType":
@@ -28,44 +41,37 @@
           title = "Añadir nuevo tipo de documento";
           break;
       }
-      // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.prompt()
         .title(title)
         .placeholder('Nombre')
         .ariaLabel(title)
         .ok('Aceptar')
         .cancel('Cancelar');
-
       $mdDialog.show(confirm).then(function (result) {
-        var objToSave = {
+        var objToSave = {};
+        objToSave[vm.lang] = {
           name: result
-        };
+        }
         vm.addElement(objToSave, obj);
       });
-    };
+    }
 
-    vm.addElement = function (object, localReferences) {
+    function addElement(object, localReferences) {
       AppF.loading = true;
       object = FirebaseF.prepareObject(object);
-      //console.log(object, localReferences.reference)
       AppF.root.child(localReferences.reference).push(object).then(function (snap) {
         var id = snap.key;
-        vm.property[localReferences.object] = id;
+        vm[localReferences.node][localReferences.object] = id;
         AppF.loading = false;
         toastr.info("Se añadio elemento con exito");
       });
     }
 
-    vm.saveText = "Guardar Propiedad";
-    vm.blancProperty = {
-      owners: [{}],
-      intermediaries: []
-    };
-    vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCyA-BPAOyFhVGBMCXS9fB5Yc6Dioh2360";
-    vm.deleteImage = function (index, array) {
+    function deleteImage(index, array) {
       array.splice(index, 1);
     }
-    vm.addMarker = function (event) {
+
+    function addMarker(event) {
       if (vm.editGps) {
         var ll = event.latLng;
         vm.property.gps = {
@@ -74,17 +80,20 @@
         }
       }
     }
-    vm.goBack = function () {
+
+    function goBack() {
       AppF.go("admin.properties");
     }
-    vm.addRow = function (element) {
-      vm.property[element].push({});
+
+    function addRow(element, node) {
+      vm[node][element].push({});
     }
-    vm.deleteRow = function (element, index) {
+
+    function deleteRow(element, index) {
       vm.property[element].splice(index, 1);
     }
 
-    vm.deletePropertyImage = function (imageObj, propertyId) {
+    function deletePropertyImage(imageObj, propertyId) {
       // Create a reference to the file to delete
       var image = FbStorage.child('images/' + propertyId + '/' + imageObj.name);
       // Delete the file
@@ -103,7 +112,29 @@
       });
     }
 
-    var uploadFile = function (uploadTask) {
+    function saveProperty(property, propertyPrivate, files) {
+      AppF.loading = true;
+      vm.saveText = "Guardando...";
+      savePropertyFB(property, propertyPrivate).then(function (data) {
+        toastr.info("Se guardo la propiedad");
+        AppF.loading = false;
+        vm.goBack();
+      }, function (error) {
+        toastr.warning(error);
+      });
+    }
+
+    function verifyAddOption(element) {
+      if (typeof (element) == "object") {
+        if (element.action == "add") {
+          delete vm[element.node][element.object];
+          vm.openAddDialog(element);
+        }
+      }
+    }
+
+    //other functions
+    function uploadFile(uploadTask) {
       var deferred = $q.defer();
       var resp = {
         status: false
@@ -122,19 +153,22 @@
       });
       return deferred.promise;
     }
-    var saveProperty = function (property) {
+
+    function savePropertyFB(property, propertyPrivate) {
       var deferred = $q.defer();
-      var promise = "";
+      var promises = [];
+      var propertyId = "";
       property = FirebaseF.prepareObject(property);
+      propertyPrivate = FirebaseF.prepareObject(propertyPrivate);
       if (angular.isDefined(property.$id)) {
-        promise = AppF.root.child("properties/" + property.$id).update(clearObjectFilter(property));
+        propertyId = property.$id;
       } else {
-        promise = AppF.root.child("properties").push(clearObjectFilter(property));
+        propertyId = AppF.root.child('properties').push().key;
       }
-      promise.then(function (data) {
-        $log.log(data, property);
-        if (angular.isUndefined(property.$id)) vm.property.$id = data.key;
-        $log.log(vm.files, angular.isDefined(vm.files));
+      promises.push(AppF.root.child("properties/" + propertyId).update(clearObjectFilter(property)));
+      promises.push(AppF.root.child("propertiesPrivate/" + propertyId).update(clearObjectFilter(propertyPrivate)));
+      $q.all(promises).then(function (data) {
+        if (angular.isUndefined(property.$id)) vm.property.$id = propertyId
         if (angular.isDefined(vm.files)) {
           var filesReferences = {};
           var uploadTasks = {};
@@ -180,34 +214,26 @@
       }, function (error) {
         deferred.reject(error);
       });
-
       return deferred.promise;
     }
-    vm.saveProperty = function (property, files) {
-      $log.log(files);
-      AppF.loading = true;
-      vm.saveText = "Guardando...";
-      saveProperty(property).then(function (data) {
-        toastr.info("Se guardo la propiedad");
-        AppF.loading = false;
-        vm.goBack();
-      }, function (error) {
-        toastr.warning(error);
-      });
+
+    function init() {
+      if ($state.params.property) {
+        vm.property = $state.params.property;
+        vm.propertyPrivate = FirebaseF.loadObject("propertiesPrivate", vm.property.$id);
+      } else if ($state.params.propertyId) {
+        vm.property = FirebaseF.loadObject("properties", $state.params.propertyId);
+        vm.property.$loaded().then(function () {
+          vm.propertyPrivate = FirebaseF.loadObject("propertiesPrivate", vm.property.$id);
+        });
+      } else {
+        vm.property = vm.blancProperty;
+        vm.propertyPrivate = vm.blancPropertyPrivate;
+      }
+      FirebaseF.loadList(["saleTypes", "docTypes"])
     }
 
-    vm.verifyAddOption = function (element) {
-      if (typeof (element) == "object") {
-        if (element.action == "add") {
-          delete vm.property[element.object];
-          vm.openAddDialog(element);
-        }
-      }
-
-
-    };
-
+    //se inicia la carga
     init();
-
   }
 })();

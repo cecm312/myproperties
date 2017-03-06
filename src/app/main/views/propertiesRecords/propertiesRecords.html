@@ -1,21 +1,45 @@
-<md-content layout="column" layout-padding="layout-padding">
-  <div flex layout="row" layout-align="start center">
+<md-content layout="column" flex layout-padding="layout-padding" layout-fill>
+  <div flex="nogrow" layout="row" layout-align="start center">
     <h1 flex="nogrow">Lista de propiedades</h1>
-    <div flex="nogrow">
-      <md-button class="md-raised md-primary" ng-click="propertiesCtrl.go()">Añadir Propiedad</md-button>
-    </div>
   </div>
-  <md-list flex>
-    <md-list-item class="md-3-line" ng-repeat="property in main.FBF.properties" ng-click="null">
-      <div class="md-list-item-text" layout="row" layout-align="start center">
-        <div flex layout="column">
-          <h3 style="margin:0px;">{{ property.location}} <small>{{ property.meters|currency }}</small></h3>
-          <p>{{ property.closerReference}}</p>
-        </div>
-        <div flex="nogrow">
-          <md-button class="md-raised md-primary" ng-click="propertiesCtrl.go(property)">Editar</md-button>
-        </div>
-      </div>
-    </md-list-item>
-  </md-list>
+  <div flex class="content-card">
+    <md-table-container>
+      <table md-table md-row-select multiple ng-model="propertiesCtrl.selected">
+        <thead md-head md-order="query.order" md-on-reorder="getDesserts">
+          <tr md-row>
+            <th md-column md-order-by="[main.lang].location"><span>Ubicacion</span></th>
+            <th md-column md-order-by="[main.lang].closerReference"><span>Referencia mas cercana</span></th>
+            <th md-column md-order-by="[main.lang].meters" md-numeric>M2</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="property" md-select-id="$id" md-auto-select ng-repeat="property in main.FBF.lists.properties">
+            <td md-cell>{{property[main.lang].location}}</td>
+            <td md-cell>{{property[main.lang].closerReference}}</td>
+            <td md-cell>{{property[main.lang].meters|number:2}} m2</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+    <md-fab-speed-dial md-open="propertiesCtrl.isOpen" md-direction="up" class="md-fling md-fab-bottom-right">
+      <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-warn">
+          <md-icon>view_module</md-icon>
+        </md-button>
+      </md-fab-trigger>
+      <md-fab-actions>
+        <md-button ng-click="propertiesCtrl.go()" aria-label="Añadir" class="md-fab md-raised md-mini">
+          <md-icon>add</md-icon>
+        </md-button>
+        <md-button ng-click="propertiesCtrl.go(propertiesCtrl.selected[0])" ng-if="propertiesCtrl.selected.length==1" aria-label="Editar"
+          class="md-fab md-raised md-mini">
+          <md-icon>create </md-icon>
+        </md-button>
+        <md-button ng-if="propertiesCtrl.selected.length>=1" ng-click="propertiesCtrl.deleteProperty(propertiesCtrl.selected)" aria-label="Eliminar"
+          class="md-fab md-raised md-mini">
+          <md-icon>clear </md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-fab-speed-dial>
+  </div>
 </md-content>

@@ -46,9 +46,10 @@
         }
       })
       .state('admin.properties.details', {
-        url: '/details',
+        url: '/details/:propertyId',
         params:{
-          property:false
+          property:false,
+          propertyId:null
         },
         views: {
           'content@admin': {

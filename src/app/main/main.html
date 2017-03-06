@@ -1,9 +1,9 @@
 <div layout="column" ng-cloak="ng-cloak" layout-fill>
-  <md-toolbar class="md-hue-2">
+  <md-toolbar flex="nogrow" class="md-hue-2">
     <div class="md-toolbar-tools">
-      <!--<md-button ng-click="toggleRight()" ng-hide="isOpenRight()">
-        <md-icon> view_headline </md-icon>
-      </md-button>-->
+      <md-button ng-click="main.toggleLeft()">
+        <md-icon>view_headline </md-icon>
+      </md-button>
       <h2 flex="nogrow">
         <span>Panel de Administracion</span>
       </h2>
@@ -15,5 +15,19 @@
       </div>
     </div>
   </md-toolbar>
-  <div ui-view="content"></div>
+  <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Menu</h1>
+    </md-toolbar>
+    <md-content>
+      <md-list ng-cloak>
+        <md-list-item ng-repeat="item in main.F.menu" ng-click="main.F.go(item.state)">
+          <md-icon>{{item.icon?item.icon:'label'}}</md-icon>
+          <p>{{item.name}}</p>
+          <md-icon>keyboard_arrow_right </md-icon>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+  <div flex ui-view="content" layout-fill></div>
 </div>

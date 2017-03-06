@@ -19,7 +19,12 @@
   function AppF($state, firebase) {
     var obj = {
       go: go,
-      root: firebase.database().ref('/')
+      root: firebase.database().ref('/'),
+      menu: [{
+        icon: "label",
+        name: "Propiedades",
+        state: "admin.properties"
+      }]
     };
 
     function go(state, params) {
@@ -28,13 +33,15 @@
       else
         $state.go(state);
     }
+
     return obj;
   }
 
-  function FirebaseF($firebaseArray, AppF, firebase) {
+  function FirebaseF($firebaseArray, AppF, firebase, $firebaseObject) {
     var obj = {
       loadList: loadList,
-      prepareObject: prepareObject
+      prepareObject: prepareObject,
+      loadObject: loadObject
     };
 
     function prepareObject(obj) {
@@ -53,7 +60,8 @@
     }
 
     function loadNode(node) {
-      if (angular.isUndefined(obj[node])) obj[node] = $firebaseArray(AppF.root.child(node));
+      if (angular.isUndefined(obj.lists)) obj.lists = {}
+      if (angular.isUndefined(obj.lists[node])) obj.lists[node] = $firebaseArray(AppF.root.child(node));
     }
 
     function loadList(item) {
@@ -67,6 +75,13 @@
           loadNode(item)
           break;
       }
+    }
+
+    function loadObject(reference, id) {
+      if (angular.isUndefined(obj.objects)) obj.objects = {};
+      if (angular.isUndefined(obj.objects[reference])) obj.objects[reference] = {};
+      if (angular.isUndefined(obj.objects[reference][id])) obj.objects[reference][id] = $firebaseObject(AppF.root.child(reference).child(id));
+      return obj.objects[reference][id]
     }
 
     return obj;

@@ -14,23 +14,23 @@
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
         <label>Ubicacion</label>
-        <input type="text" required ng-model="propertyCtrl.property.location">
+        <input type="text" required ng-model="propertyCtrl.property[main.lang].location">
       </md-input-container>
     </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex="30">
         <label>M2</label>
-        <input required type="number" ng-model="propertyCtrl.property.meters">
+        <input required type="number" ng-model="propertyCtrl.property[main.lang].meters">
       </md-input-container>
       <md-input-container flex="70">
         <label>Referencia mas cercana</label>
-        <input type="text" ng-model="propertyCtrl.property.closerReference">
+        <input type="text" ng-model="propertyCtrl.property[main.lang].closerReference">
       </md-input-container>
     </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
         <label>Campo Libre</label>
-        <input type="text" ng-model="propertyCtrl.property.otherpublic">
+        <input type="text" ng-model="propertyCtrl.property[main.lang].other">
       </md-input-container>
     </div>
     <div layout="column" layout-align="start start">
@@ -93,18 +93,18 @@
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
         <label>Tipo de documento</label>
-        <md-select required ng-model="propertyCtrl.property.docType" ng-change="propertyCtrl.verifyAddOption(propertyCtrl.property.docType,this)">
-          <md-option ng-repeat="docType in main.FBF.docTypes" ng-value="docType.$id">{{docType.name}}</md-option>
-          <md-option ng-value="{action:'add',object:'docType',reference:'docTypes'}">Agregar nuevo</md-option>
+        <md-select required ng-model="propertyCtrl.propertyPrivate.docType" ng-change="propertyCtrl.verifyAddOption(propertyCtrl.propertyPrivate.docType,this)">
+          <md-option ng-repeat="docType in main.FBF.lists.docTypes" ng-value="docType.$id">{{docType[main.lang].name}}</md-option>
+          <md-option ng-value="{action:'add',object:'docType',reference:'docTypes',node:'propertyPrivate'}">Agregar nuevo</md-option>
         </md-select>
       </md-input-container>
       <md-input-container flex>
         <label>Precio Pactado</label>
-        <input required type="number" ng-model="propertyCtrl.property.price">
+        <input required type="number" ng-model="propertyCtrl.propertyPrivate.price">
       </md-input-container>
       <md-input-container flex>
         <label>Precio Venta</label>
-        <input required type="number" ng-model="propertyCtrl.property.salePrice">
+        <input required type="number" ng-model="propertyCtrl.propertyPrivate.salePrice">
       </md-input-container>
     </div>
     <div layout="row" layout-align="start center">
@@ -112,11 +112,11 @@
         <h3>Propietario</h3>
       </div>
       <div flex="nogrow">
-        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('owners')">Agregar Propietario</md-button>
+        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('owners','propertyPrivate')">Agregar Propietario</md-button>
       </div>
     </div>
     <div layout="column">
-      <div flex layout="column" layout-gt-xs="row" layout ng-repeat="($index,owner) in propertyCtrl.property.owners">
+      <div flex layout="column" layout-gt-xs="row" layout ng-repeat="($index,owner) in propertyCtrl.propertyPrivate.owners">
         <md-input-container flex>
           <label>Nombre</label>
           <input required type="name" ng-model="owner.name">
@@ -130,7 +130,7 @@
           <input type="email" ng-model="owner.email">
         </md-input-container>
         <div flex="nogrow">
-          <md-button class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('owners',$index)">Eliminar</md-button>
+          <md-button class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('owners',$index,'propertyPrivate')">Eliminar</md-button>
         </div>
       </div>
     </div>
@@ -139,11 +139,11 @@
         <h3>Intermediarios</h3>
       </div>
       <div flex="nogrow">
-        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('intermediaries')">Agregar Intermediario</md-button>
+        <md-button class="md-raised md-primary" ng-click="propertyCtrl.addRow('intermediaries','propertyPrivate')">Agregar Intermediario</md-button>
       </div>
     </div>
     <div layout="column">
-      <div flex layout="column" layout-gt-xs="row" ng-repeat="($index,intermediary) in propertyCtrl.property.intermediaries">
+      <div flex layout="column" layout-gt-xs="row" ng-repeat="($index,intermediary) in propertyCtrl.propertyPrivate.intermediaries">
         <md-input-container flex>
           <label>Nombre</label>
           <input required type="name" ng-model="intermediary.name">
@@ -153,21 +153,21 @@
           <input required type="text" ng-model="intermediary.phone">
         </md-input-container>
         <div flex="nogrow">
-          <md-button class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('intermediaries',$index)"> Eliminar </md-button>
+          <md-button class="md-raised md-primary" ng-click="propertyCtrl.deleteRow('intermediaries',$index,'propertyPrivate')"> Eliminar </md-button>
         </div>
       </div>
     </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex="30">
         <label>Tipo de venta</label>
-        <md-select required ng-model="propertyCtrl.property.saleType" ng-change="propertyCtrl.verifyAddOption(propertyCtrl.property.saleType,this)">
-          <md-option ng-repeat="saleType in main.FBF.saleTypes" ng-value="saleType.$id">{{saleType.name}}</md-option>
-          <md-option ng-value="{action:'add',object:'saleType',reference:'saleTypes'}">Agregar nuevo</md-option>
+        <md-select required ng-model="propertyCtrl.propertyPrivate.saleType" ng-change="propertyCtrl.verifyAddOption(propertyCtrl.propertyPrivate.saleType,this)">
+          <md-option ng-repeat="saleType in main.FBF.lists.saleTypes" ng-value="saleType.$id">{{saleType[main.lang].name}}</md-option>
+          <md-option ng-value="{action:'add',object:'saleType',reference:'saleTypes',node:'propertyPrivate'}">Agregar nuevo</md-option>
         </md-select>
       </md-input-container>
       <md-input-container flex="70">
         <label>Campo Libre</label>
-        <input type="text" ng-model="propertyCtrl.property.otherprivate">
+        <input type="text" ng-model="propertyCtrl.propertyPrivate.other">
       </md-input-container>
     </div>
     <!--<div layout layout-sm="column" ng-if="propertyCtrl.addingSaleType">
@@ -181,7 +181,7 @@
     <div layout="row" layout-sm="column">
       <label flex></label>
       <div flex="nogrow">
-        <md-button ng-disabled="!propertyForm.$valid || main.F.loading" ng-click="propertyCtrl.saveProperty(propertyCtrl.property,propertyCtrl.files)"
+        <md-button ng-disabled="!propertyForm.$valid || main.F.loading" ng-click="propertyCtrl.saveProperty(propertyCtrl.property,propertyCtrl.propertyPrivate,propertyCtrl.files)"
           class="md-raised md-primary">{{propertyCtrl.saveText}}</md-button>
       </div>
       <div flex="nogrow">
