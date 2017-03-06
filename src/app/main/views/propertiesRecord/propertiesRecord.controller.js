@@ -89,8 +89,8 @@
       vm[node][element].push({});
     }
 
-    function deleteRow(element, index) {
-      vm.property[element].splice(index, 1);
+    function deleteRow(element, index,node) {
+      vm[node][element].splice(index, 1);
     }
 
     function deletePropertyImage(imageObj, propertyId) {
