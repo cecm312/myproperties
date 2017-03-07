@@ -49,7 +49,7 @@
         .cancel('Cancelar');
       $mdDialog.show(confirm).then(function (result) {
         var objToSave = {};
-        objToSave[vm.lang] = {
+        objToSave[$scope.$parent.main.lang] = {
           name: result
         }
         vm.addElement(objToSave, obj);

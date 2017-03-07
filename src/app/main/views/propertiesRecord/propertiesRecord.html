@@ -19,7 +19,7 @@
     </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex="30">
-        <label>M2</label>
+        <label>M2: <strong>{{propertyCtrl.property[main.lang].meters|number:"2"}}</strong></label>
         <input required type="number" ng-model="propertyCtrl.property[main.lang].meters">
       </md-input-container>
       <md-input-container flex="70">
@@ -99,11 +99,12 @@
         </md-select>
       </md-input-container>
       <md-input-container flex>
-        <label>Precio Pactado</label>
+        <label>Precio Pactado: <strong>{{propertyCtrl.propertyPrivate.price|currency}}</strong></label>
         <input required type="number" ng-model="propertyCtrl.propertyPrivate.price">
+
       </md-input-container>
       <md-input-container flex>
-        <label>Precio Venta</label>
+        <label>Precio Venta <strong>{{propertyCtrl.propertyPrivate.salePrice|currency}}</strong></label>
         <input required type="number" ng-model="propertyCtrl.propertyPrivate.salePrice">
       </md-input-container>
     </div>
