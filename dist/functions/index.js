@@ -83,10 +83,10 @@ router.post('/sendEmail', sendEmail);
 
 app.use(router);
 
-app.listen(3000, function () {
-  console.log("Node server running on http://localhost:3000");
-});
+// app.listen(3000, function () {
+//   console.log("Node server running on http://localhost:3000");
+// });
 // This HTTPS endpoint can only be accessed by your Firebase Users.
 // Requests need to be authorized by providing an `Authorization` HTTP header
 // with value `Bearer <Firebase ID Token>`.
-//exports.properties = functions.https.onRequest(app);
+exports.properties = functions.https.onRequest(app);
