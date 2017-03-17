@@ -13,6 +13,7 @@
       storageBucket: "myproperties-c4a80.appspot.com",
       messagingSenderId: "234749633393"
     })
-    .constant('API', "http://localhost:3000");
+    //.constant('API', "http://localhost:3000");
+    .constant('API', "https://us-central1-myproperties-c4a80.cloudfunctions.net/properties");
 
 })();
