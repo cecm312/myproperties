@@ -6,3 +6,6 @@ coverage/
 .tmp/
 dist/*
 !dist/public/
+!dist/functions
+dist/function/node_modules
+

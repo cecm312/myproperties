@@ -8,12 +8,10 @@
   /** @ngInject */
   function MapController($firebaseArray, AppF, $scope, FirebaseF, $q, FbStorage, toastr, $log, NgMap) {
     var vm = this;
-    vm.lang = "es";
     vm.positions = {};
     vm.FBF = FirebaseF;
     vm.showDetail = showDetail;
     vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCyA-BPAOyFhVGBMCXS9fB5Yc6Dioh2360";
-    $log.log("asdasda");
     //other functions
     function init() {
       FirebaseF.loadList(["properties"]);

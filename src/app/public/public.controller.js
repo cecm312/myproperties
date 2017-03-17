@@ -17,6 +17,8 @@
     vm.toggleLeft = buildToggler('left');
     vm.toggleRight = buildToggler('right');
 
+    vm.contactInformation = FirebaseF.loadObject("contactInformation")
+
     function buildToggler(componentId) {
       return function () {
         $mdSidenav(componentId).toggle();

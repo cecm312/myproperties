@@ -6,7 +6,7 @@
     .controller('PropertiesRecordController', PropertiesRecordController);
 
   /** @ngInject */
-  function PropertiesRecordController($scope, $mdDialog, AppF, clearObjectFilter, toastr, $state, FirebaseF, $log, FbStorage, $q, fileExtensionFilter) {
+  function PropertiesRecordController(NgMap, $scope, $mdDialog, AppF, clearObjectFilter, toastr, $state, FirebaseF, $log, FbStorage, $q, fileExtensionFilter) {
     var vm = this;
     //variables
     vm.editGps = false;
@@ -17,6 +17,8 @@
       owners: [{}],
       intermediaries: []
     };
+
+    vm.mylocation = false;
 
     //functions in scope
     vm.openAddDialog = openAddDialog;
@@ -29,7 +31,12 @@
     vm.deletePropertyImage = deletePropertyImage;
     vm.saveProperty = saveProperty
     vm.verifyAddOption = verifyAddOption
+    vm.centerLocation = centerLocation;
+    vm.editLocation = editLocation;
 
+    var locationOptions = {
+      enableHighAccuracy: true
+    };
 
     function openAddDialog(obj) {
       var title = "";
@@ -89,7 +96,7 @@
       vm[node][element].push({});
     }
 
-    function deleteRow(element, index,node) {
+    function deleteRow(element, index, node) {
       vm[node][element].splice(index, 1);
     }
 
@@ -132,6 +139,14 @@
           vm.openAddDialog(element);
         }
       }
+    }
+
+    function centerLocation() {
+      vm.map.setCenter(vm.mylocation);
+    }
+
+    function editLocation() {
+      vm.editGps = !vm.editGps
     }
 
     //other functions
@@ -218,6 +233,15 @@
       return deferred.promise;
     }
 
+    function error(err) {
+      $log.warn('ERROR(' + err.code + '): ' + err.message);
+    }
+
+    function showPosition(position) {
+      $log.log(position);
+      vm.mylocation = new google.maps.LatLng(position.coords.latitude, position.coords.latitude);
+    }
+
     function init() {
       if ($state.params.property) {
         vm.property = $state.params.property;
@@ -232,6 +256,16 @@
         vm.propertyPrivate = vm.blancPropertyPrivate;
       }
       FirebaseF.loadList(["saleTypes", "docTypes"])
+
+      NgMap.getMap().then(function (map) {
+        vm.map = map;
+      });
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, error, locationOptions);
+      } else {
+        $log.log("GPS not supported")
+      }
     }
 
     //se inicia la carga

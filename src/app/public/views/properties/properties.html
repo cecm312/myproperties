@@ -1,0 +1,54 @@
+<md-content layout="column" layout-gt-sm="row" layout-wrap>
+  <div flex="100" flex-gt-xs="60" flex-offset-gt-sm="5" layout="column">
+    <div id="slideShow" flex="nogrow" ng-if="publicPropertyCtrl.property.images">
+      <md-button class="md-fab next" aria-label="More" ng-click="publicPropertyCtrl.goSlide()">
+        <md-icon>keyboard_arrow_right</md-icon>
+      </md-button>
+      <md-button class="md-fab prev" aria-label="More" ng-click="publicPropertyCtrl.goSlide('prev')">
+        <md-icon>keyboard_arrow_left</md-icon>
+      </md-button>
+
+
+      <img style="object-fit: contain;width: 100%;max-height: 600px;margin:auto" ng-repeat="image in publicPropertyCtrl.property.images"
+        ng-if="image.show" ng-src="{{image.url}}">
+    </div>
+    <div flex layout-padding>
+      <h2>Informacion de la propiedad</h2>
+      <h3>Ubicacion</h3>
+      <p>{{publicPropertyCtrl.property[main.lang].location}}</p>
+      <h3>Referencias mas cercana</h3>
+      <p>{{publicPropertyCtrl.property[main.lang].closerReference}}</p>
+      <h3>Metros Cuadrados</h3>
+      <p>{{publicPropertyCtrl.property[main.lang].meters|number:2}} m2</p>
+      <h2>Informacion de contacto</h2>
+      <h3>Contacto</h3>
+      <p>{{main.contactInformation.name}}</p>
+      <h3>Telefono</h3>
+      <p>{{main.contactInformation.phone}}</p>
+      <h3>Correo</h3>
+      <p>{{main.contactInformation.email}}</p>
+    </div>
+  </div>
+  <div flex="100" flex-gt-sm="30" layout-padding>
+    <contact-form subject="{{publicPropertyCtrl.property[main.lang].location}}"></contact-form>
+  </div>
+
+
+  <!--<div flex="100" flex-gt-sm="80" flex-offset-gt-sm="10" >
+    <div id="slideShow" flex="nogrow" ng-if="publicPropertyCtrl.property.images">
+      <md-button class="md-icon-button  md-primary next" aria-label="More" ng-click="publicPropertyCtrl.goSlide()">
+        <md-icon>keyboard_arrow_right</md-icon>
+      </md-button>
+      <md-button class="md-icon-button  md-primary prev" aria-label="More" ng-click="publicPropertyCtrl.goSlide('prev')">
+        <md-icon>keyboard_arrow_left</md-icon>
+      </md-button>
+      <img style="object-fit: contain;width: 100%;max-height: 600px;margin:auto" ng-repeat="image in publicPropertyCtrl.property.images"
+        ng-if="image.show" ng-src="{{image.url}}">
+    </div>
+    <div flex>
+      <pre>
+    {{publicPropertyCtrl.property|json}}
+  </pre>
+    </div>
+  </div>-->
+</md-content>

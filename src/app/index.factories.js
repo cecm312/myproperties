@@ -80,8 +80,14 @@
     function loadObject(reference, id) {
       if (angular.isUndefined(obj.objects)) obj.objects = {};
       if (angular.isUndefined(obj.objects[reference])) obj.objects[reference] = {};
-      if (angular.isUndefined(obj.objects[reference][id])) obj.objects[reference][id] = $firebaseObject(AppF.root.child(reference).child(id));
-      return obj.objects[reference][id]
+      if (id) {
+        if (angular.isUndefined(obj.objects[reference][id])) obj.objects[reference][id] = $firebaseObject(AppF.root.child(reference).child(id));
+        return obj.objects[reference][id]
+      } else {
+        obj.objects[reference] = $firebaseObject(AppF.root.child(reference));
+        return obj.objects[reference]
+      }
+
     }
 
     return obj;

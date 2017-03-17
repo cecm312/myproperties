@@ -12,6 +12,7 @@
       databaseURL: "https://myproperties-c4a80.firebaseio.com",
       storageBucket: "myproperties-c4a80.appspot.com",
       messagingSenderId: "234749633393"
-    });
+    })
+    .constant('API', "http://localhost:3000");
 
 })();

@@ -35,6 +35,34 @@
           }
         }
       })
+      .state('home.properties', {
+        url: 'properties',
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/properties/properties.html';
+            },
+            controller: 'PublicPropertiesController',
+            controllerAs: 'publicPropertiesCtrl'
+          }
+        }
+      })
+      .state('home.properties.detail', {
+        url: '/detail/:propertyId',
+        params: {
+          property: false,
+          propertyId: null
+        },
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/properties/properties.html';
+            },
+            controller: 'PublicPropertyController',
+            controllerAs: 'publicPropertyCtrl'
+          }
+        }
+      })
       .state('admin', {
         url: '/admin',
         templateUrl: 'app/main/main.html',
@@ -84,7 +112,6 @@
           }]
         }
       })
-
       .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',

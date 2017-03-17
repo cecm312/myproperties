@@ -73,17 +73,48 @@
     <div layout="column" layout-align="start start">
       <div flex layout="row" layout-align="start center">
         <h3 flex="nogrow">Mapa</h3>
-        <div flex="nogrow">
-          <md-button class="md-raised md-primary" ng-click="propertyCtrl.editGps=!propertyCtrl.editGps">{{propertyCtrl.editGps?'Guardar':'Editar Ubicacion'}}</md-button>
-        </div>
       </div>
     </div>
     <div layout="column" layout-gt-xs="row">
       <div flex>
-        <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{propertyCtrl.googleMapsUrl}}" height="600px">
-          <ng-map center="current-location" zoom="9" on-click="propertyCtrl.addMarker()">
+        <div style="position:relative" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{propertyCtrl.googleMapsUrl}}"
+          height="600px">
+          <ng-map zoom="9" on-click="propertyCtrl.addMarker()" default-style="true">
             <marker position="{{propertyCtrl.property.gps.lat}},{{propertyCtrl.property.gps.lng}}"></marker>
+            <custom-control id="edit-location" position="BOTTOM_CENTER" index="1" on-click="propertyCtrl.editLocation()">
+              <div style=" background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 6px 10px 6px 10px;
+  text-decoration: none;;cursor: pointer">{{propertyCtrl.editGps?'Guardar':'Editar Ubicacion'}}</div>
+            </custom-control>
+            <custom-control ng-if="propertyCtrl.mylocation" id="go-home" position="BOTTOM_CENTER" index="1" on-click="propertyCtrl.centerLocation()">
+              <div style=" background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 6px 10px 6px 10px;
+  text-decoration: none;cursor: pointer">Ir a mi ubicacion</div>
+            </custom-control>
           </ng-map>
+
         </div>
       </div>
     </div>
