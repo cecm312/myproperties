@@ -1,7 +1,7 @@
 <md-content layout="column" flex layout-fill>
   <div map-lazy-load="https://maps.google.com/maps/api/js" layout-fill map-lazy-load-params="{{mapCtrl.googleMapsUrl}}">
-    <ng-map zoom="9" style="height:100%">
-      <marker id="{{p.$id}}" ng-repeat="p in main.FBF.lists.properties"  on-click="mapCtrl.showDetail(p)" position="{{p.gps.lat}},{{p.gps.lng}}"></marker>
+    <ng-map zoom="9" style="height:100%" center="[{{mapCtrl.lat}}, {{mapCtrl.lng}}]">
+      <marker id="{{p.$id}}" ng-repeat="p in main.FBF.lists.properties" animation="{{p.gps.active?'BOUNCE':''}}" on-click="mapCtrl.showDetail(p)" position="{{p.gps.lat}},{{p.gps.lng}}"></marker>
        <info-window id="foo-iw">
         <div ng-non-bindable="">
           Ubicacion: {{mapCtrl.propertySelected[main.lang].location}}<br/>

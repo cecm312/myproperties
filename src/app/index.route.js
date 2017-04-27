@@ -18,13 +18,17 @@
     $locationProvider.html5Mode(true);
     $stateProvider
       .state('home', {
+        abstract: true,
         url: '/',
         templateUrl: 'app/public/public.html',
         controller: 'PublicController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        ncyBreadcrumb: {
+          label: 'Inicio'
+        }
       })
       .state('home.map', {
-        url: 'map',
+        url: 'map?lat&lng&id',
         views: {
           'content@home': {
             templateUrl: function () {
@@ -33,6 +37,9 @@
             controller: 'MapController',
             controllerAs: 'mapCtrl'
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Mapa'
         }
       })
       .state('home.properties', {
@@ -45,6 +52,9 @@
             controller: 'PublicPropertiesController',
             controllerAs: 'publicPropertiesCtrl'
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Propiedades'
         }
       })
       .state('home.properties.detail', {
@@ -56,11 +66,29 @@
         views: {
           'content@home': {
             templateUrl: function () {
-              return 'app/public/views/properties/properties.html';
+              return 'app/public/views/properties/property.html';
             },
             controller: 'PublicPropertyController',
             controllerAs: 'publicPropertyCtrl'
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Detalles'
+        }
+      })
+      .state('home.contact', {
+        url: 'contact',
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/contact/contact.html';
+            },
+            controller: 'ContactController',
+            controllerAs: 'contactCtrl'
+          }
+        },
+        ncyBreadcrumb: {
+          label: 'Propiedades'
         }
       })
       .state('admin', {

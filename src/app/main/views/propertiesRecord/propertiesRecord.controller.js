@@ -67,10 +67,7 @@
       AppF.loading = true;
       object = FirebaseF.prepareObject(object);
       AppF.root.child(localReferences.reference).push(object).then(function (snap) {
-        var id = snap.key;
-        vm[localReferences.node][localReferences.object] = id;
-        AppF.loading = false;
-        toastr.info("Se añadio elemento con exito");
+        
       });
     }
 

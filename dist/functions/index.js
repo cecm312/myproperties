@@ -8,12 +8,18 @@ const methodOverride = require("body-parser");
 const cors = require('cors')({
   origin: true
 });
-const api_key = 'key-2578ee979a39213d2cd35f7f57cf29f9';
-const domain = 'sandbox4f20eb3dbcd9490d8c68ce559f20e6a4.mailgun.org'
-const mailgun = require('mailgun-js')({
-  apiKey: api_key,
-  domain: domain
-});
+
+// const api_key = 'key-2578ee979a39213d2cd35f7f57cf29f9';
+// const domain = 'sandbox4f20eb3dbcd9490d8c68ce559f20e6a4.mailgun.org'
+// const mailgun = require('mailgun-js')({
+//   apiKey: api_key,
+//   domain: domain
+// });
+
+const nodemailer = require('nodemailer');
+const gmailEmail = encodeURIComponent(functions.config().gmail.email);
+const gmailPassword = encodeURIComponent(functions.config().gmail.password);
+const mailTransport = nodemailer.createTransport(`smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
 
 
@@ -25,7 +31,6 @@ function sendHelloWord(req, res) {
 function sendEmail(req, res) {
   var arrayParamsNeeded = ["name", "email", "subject"];
   var allNeeded = true;
-  console.log(req.body)
   for (var a in arrayParamsNeeded) {
     if (!req.body[arrayParamsNeeded[a]]) {
       allNeeded = false;
@@ -38,23 +43,37 @@ function sendEmail(req, res) {
     var data = {
       from: from,
       to: 'carlosechanm@gmail.com',
-      subject: from,
-      text: from
+      subject: subject,
+      html: text
     };
-    mailgun.messages().send(data, function (error, body) {
-      if (error) {
-        res.status(403).json({
-          status: 0,
-          error: error,
-          msg: "No se pudo enviar el correo"
-        });
-      } else {
-        res.json({
-          status: 1,
-          msg: "Email enviado"
-        });
-      }
+
+    mailTransport.sendMail(data).then((error, info) => {
+      res.json({
+        status: 1,
+        error: error,
+        info: info,
+        msg: "Email enviado"
+      });
     });
+
+
+    // mailgun.messages().send(data, function (error, body) {
+    //   if (error) {
+    //     res.status(403).json({
+    //       status: 0,
+    //       error: error,
+    //       msg: "No se pudo enviar el correo"
+    //     });
+    //   } else {
+    //     res.json({
+    //       status: 1,
+    //       msg: "Email enviado"
+    //     });
+    //   }
+    // });
+
+
+
   } else {
     res.status(403).json({
       status: 0,

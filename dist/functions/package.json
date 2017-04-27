@@ -8,6 +8,7 @@
     "firebase-admin": "^4.1.2",
     "firebase-functions": "^0.5.1",
     "mailgun-js": "^0.8.2",
-    "method-override": "^2.3.7"
+    "method-override": "^2.3.7",
+    "nodemailer": "^3.1.7"
   }
 }
