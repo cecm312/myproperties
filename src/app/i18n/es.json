@@ -1,36 +1,51 @@
 {
-    "loginPage":{
-        "formName":"Iniciar Sesion",
-        "labelUsername":"Usuario",
-        "inputUsername":"Ingrese su usuario",
-        "invalidUsername":"Por favor ingrese su usuario",
-        "labelPassword":"Contraseña",
-        "inputPassword":"Ingrese su contraseña",
-        "invalidPassword":"Por favor ingrese su contraseña",
-        "buttonLogin":"Acceder"
+  "loginPage": {
+    "formName": "Iniciar Sesion",
+    "labelUsername": "Usuario",
+    "inputUsername": "Ingrese su usuario",
+    "invalidUsername": "Por favor ingrese su usuario",
+    "labelPassword": "Contraseña",
+    "inputPassword": "Ingrese su contraseña",
+    "invalidPassword": "Por favor ingrese su contraseña",
+    "buttonLogin": "Acceder"
+  },
+  "menu": {
+    "map": "Mapa",
+    "list": "Propiedades",
+    "about": "Nosotros",
+    "contact": "Contactanos"
+  },
+  "pages": {
+    "list": {
+      "title": "Lista de propiedades"
     },
-    "menu":{
-        "map":"Mapa",
-        "list":"Propiedades",
-        "about":"Nosotros",
-        "contact":"Contactanos"
+    "listDetail": {
+      "title": "Informacion de la propiedad",
+      "location": "Ubicacion",
+      "nearestReference": "Referencia mas cercana",
+      "squareMeters": "Metros Cuadrados",
+      "contactInformation":"Informacion de contacto",
+      "contact":"Contacto",
+      "phone":"Telefono",
+      "email":"Correo"
     },
-    "pages":{
-        "list":{
-            "title":"Lista de propiedades"
-        }
-    },
-    "components":{
-        "contactForm":{
-            "title":"Contactanos",
-            "wantInformation":"Quiero mas informacion acerca de:",
-            "name":"Nombre",
-            "email":"Correo",
-            "phone":"Telefono",
-            "subject":"Asunto",
-            "message":"Mensaje",
-            "sendMessage":"Enviar Mensaje",
-            "successEmail":"Mensaje Enviado"
-        }
+    "map": {
+      "location": "Ubicacion",
+      "nearestReference": "Referencia mas cercana",
+      "size": "Tamaño"
     }
+  },
+  "components": {
+    "contactForm": {
+      "title": "Contactanos",
+      "wantInformation": "Quiero mas informacion acerca de:",
+      "name": "Nombre",
+      "email": "Correo",
+      "phone": "Telefono",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "sendMessage": "Enviar Mensaje",
+      "successEmail": "Mensaje Enviado"
+    }
+  }
 }

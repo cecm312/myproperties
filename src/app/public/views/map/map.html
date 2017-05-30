@@ -4,9 +4,9 @@
       <marker id="{{p.$id}}" ng-repeat="p in main.FBF.lists.properties" animation="{{p.gps.active?'BOUNCE':''}}" on-click="mapCtrl.showDetail(p)" position="{{p.gps.lat}},{{p.gps.lng}}"></marker>
        <info-window id="foo-iw">
         <div ng-non-bindable="">
-          Ubicacion: {{mapCtrl.propertySelected[main.lang].location}}<br/>
-          Referencia mas cercana: {{mapCtrl.propertySelected[main.lang].closerReference}}<br/>
-          Tamaño: {{mapCtrl.propertySelected[main.lang].meters}} m2<br/>
+          {{'pages.map.location'|translate}}: {{mapCtrl.propertySelected[main.lang].location}}<br/>
+          {{'pages.map.nearestReference'|translate}}: {{mapCtrl.propertySelected[main.lang].closerReference}}<br/>
+          {{'pages.map.size'|translate}}: {{mapCtrl.propertySelected.meters}} m2<br/>
           <a ui-sref="home.properties.detail({ property: mapCtrl.propertySelected,propertyId:mapCtrl.propertySelected.$id})">Mas detalles</a>
         </div>
       </info-window>

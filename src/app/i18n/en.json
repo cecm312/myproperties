@@ -18,6 +18,21 @@
   "pages": {
     "list": {
       "title": "Properties"
+    },
+    "listDetail": {
+      "title": "Property Information",
+      "location": "Location",
+      "nearestReference": "Nearest Reference",
+      "squareMeters": "Square Meters",
+      "contactInformation":"Informacion de contacto",
+      "contact":"Contacto",
+      "phone":"Telefono",
+      "email":"Correo"
+    },
+    "map": {
+      "location": "Location",
+      "nearestReference": "Nearest Reference",
+      "size": "Size"
     }
   },
   "components": {
@@ -30,7 +45,7 @@
       "subject": "Subject",
       "message": "Message",
       "sendMessage": "Send Message",
-      "successEmail":"Message Sended"
+      "successEmail": "Message Sended"
     }
   }
 }

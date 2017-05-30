@@ -10,20 +10,22 @@
       <img style="object-fit: contain;width: 100%;max-height: 600px;margin:auto" ng-repeat="image in publicPropertyCtrl.property.images"
         ng-if="image.show" ng-src="{{image.url}}">
     </div>
-    <div  flex="nogrow">
-      <h2>Informacion de la propiedad</h2>
-      <h3>Ubicacion</h3>
+    <div flex="nogrow">
+
+      <h2>{{'pages.listDetail.title'|translate}}</h2>
+      <h3>{{'pages.listDetail.location'|translate}}</h3>
       <p>{{publicPropertyCtrl.property[main.lang].location}}</p>
-      <h3>Referencias mas cercana</h3>
+      <h3> {{'pages.listDetail.nearestReference'|translate}}</h3>
       <p>{{publicPropertyCtrl.property[main.lang].closerReference}}</p>
-      <h3>Metros Cuadrados</h3>
-      <p>{{publicPropertyCtrl.property[main.lang].meters|number:2}} m2</p>
-      <h2>Informacion de contacto</h2>
-      <h3>Contacto</h3>
+      <h3>{{'pages.listDetail.squareMeters'|translate}}</h3>
+      <p>{{publicPropertyCtrl.property.meters|number:2}} m2</p>
+      <hr>
+      <h2>{{'pages.listDetail.contactInformation'|translate}}</h2>
+      <h3>{{'pages.listDetail.contact'|translate}}</h3>
       <p>{{main.contactInformation.name}}</p>
-      <h3>Telefono</h3>
+      <h3>{{'pages.listDetail.phone'|translate}}</h3>
       <p>{{main.contactInformation.phone}}</p>
-      <h3>Correo</h3>
+      <h3>{{'pages.listDetail.email'|translate}}</h3>
       <p>{{main.contactInformation.email}}</p>
     </div>
   </div>
