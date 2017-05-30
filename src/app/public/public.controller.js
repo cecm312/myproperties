@@ -52,11 +52,5 @@
     function error(err) {
       $log.warn('ERROR(' + err.code + '): ' + err.message);
     }
-
-    function buildToggler(componentId) {
-      return function () {
-        $mdSidenav(componentId).toggle();
-      };
-    }
   }
 })();

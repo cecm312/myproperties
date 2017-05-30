@@ -1,5 +1,51 @@
 {
-    "loginPage":{
-        "formName":"Login"
+  "loginPage": {
+    "formName": "Iniciar Sesion",
+    "labelUsername": "Usuario",
+    "inputUsername": "Ingrese su usuario",
+    "invalidUsername": "Por favor ingrese su usuario",
+    "labelPassword": "Contraseña",
+    "inputPassword": "Ingrese su contraseña",
+    "invalidPassword": "Por favor ingrese su contraseña",
+    "buttonLogin": "Acceder"
+  },
+  "menu": {
+    "map": "Map",
+    "list": "Properties",
+    "about": "About Us",
+    "contact": "Contact Us"
+  },
+  "pages": {
+    "list": {
+      "title": "Properties"
+    },
+    "listDetail": {
+      "title": "Property Information",
+      "location": "Location",
+      "nearestReference": "Nearest Reference",
+      "squareMeters": "Square Meters",
+      "contactInformation":"Contact Information",
+      "contact":"Name",
+      "phone":"Phone",
+      "email":"Email"
+    },
+    "map": {
+      "location": "Location",
+      "nearestReference": "Nearest Reference",
+      "size": "Size"
     }
+  },
+  "components": {
+    "contactForm": {
+      "title": "Contact Us",
+      "wantInformation": "I want more information on:",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "sendMessage": "Send Message",
+      "successEmail": "Message Sended"
+    }
+  }
 }
