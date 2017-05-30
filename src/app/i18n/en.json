@@ -24,10 +24,10 @@
       "location": "Location",
       "nearestReference": "Nearest Reference",
       "squareMeters": "Square Meters",
-      "contactInformation":"Informacion de contacto",
-      "contact":"Contacto",
-      "phone":"Telefono",
-      "email":"Correo"
+      "contactInformation":"Contact Information",
+      "contact":"Name",
+      "phone":"Phone",
+      "email":"Email"
     },
     "map": {
       "location": "Location",
