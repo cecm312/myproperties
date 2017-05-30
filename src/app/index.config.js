@@ -6,8 +6,10 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, toastrConfig,$qProvider) {
     // Enable log
+
+    $qProvider.errorOnUnhandledRejections(false);
     $logProvider.debugEnabled(true);
 
     // Set options third-party lib

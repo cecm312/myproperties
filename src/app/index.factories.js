@@ -18,12 +18,37 @@
 
   function AppF($state, firebase) {
     var obj = {
+      siteName: "Propiedades <br> Puerto Morelos",
+      langs: [{
+          img: "http://imagenpng.com/wp-content/uploads/2015/09/Bandera_de_M%C3%A9xico_1934-1968.png",
+          name: "es",
+          displayName: "Español"
+        },
+        {
+          img: "http://www.banderas-mundo.es/data/flags/ultra/us.png",
+          name: "en",
+          displayName: "English"
+        }
+      ],
       go: go,
       root: firebase.database().ref('/'),
       menu: [{
         icon: "label",
         name: "Propiedades",
         state: "admin.properties"
+      }],
+      publicMenu: [{
+        state: "home.map",
+        name: "map"
+      }, {
+        state: "home.properties",
+        name: "list"
+      }, {
+        state: "home.about",
+        name: "about"
+      }, {
+        state: "home.contact",
+        name: "contact"
       }]
     };
 

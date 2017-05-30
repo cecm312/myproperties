@@ -6,7 +6,7 @@
     .controller('PublicController', PublicController);
 
   /** @ngInject */
-  function PublicController($timeout, webDevTec, $mdSidenav, toastr, AppF, firebase, $firebaseArray, clearObjectFilter, AuthF, FirebaseF, $log) {
+  function PublicController($timeout, webDevTec, $mdSidenav, toastr, AppF, firebase, $firebaseArray, clearObjectFilter, AuthF, FirebaseF, $log, $translate) {
     var vm = this;
     vm.lang = "es";
     vm.AuthF = AuthF;
@@ -16,6 +16,10 @@
     vm.loading = false;
     vm.toggleLeft = buildToggler('left');
     vm.toggleRight = buildToggler('right');
+    vm.changeLanguage = changeLanguage;
+    vm.toggleLeft = buildToggler('left');
+    vm.toggleRight = buildToggler('right');
+
     var locationOptions = {
       enableHighAccuracy: true
     };
@@ -25,6 +29,17 @@
       navigator.geolocation.getCurrentPosition(showPosition, error, locationOptions);
     } else {
       $log.log("GPS not supported")
+    }
+
+    function changeLanguage(langKey) {
+      $translate.use(langKey);
+      vm.lang = langKey;
+    }
+
+    function buildToggler(componentId) {
+      return function () {
+        $mdSidenav(componentId).toggle();
+      };
     }
 
     function showPosition(position) {

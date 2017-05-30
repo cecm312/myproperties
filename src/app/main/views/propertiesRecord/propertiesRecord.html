@@ -11,6 +11,7 @@
     <h2>Informacion Publica</h2>
   </div>
   <form name="propertyForm">
+
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex>
         <label>Ubicacion</label>
@@ -19,8 +20,8 @@
     </div>
     <div layout="column" layout-gt-xs="row">
       <md-input-container flex="30">
-        <label>M2: <strong>{{propertyCtrl.property[main.lang].meters|number:"2"}}</strong></label>
-        <input required type="number" ng-model="propertyCtrl.property[main.lang].meters">
+        <label>M2: <strong>{{propertyCtrl.property.meters|number:"2"}}</strong></label>
+        <input required type="number" ng-model="propertyCtrl.property.meters">
       </md-input-container>
       <md-input-container flex="70">
         <label>Referencia mas cercana</label>

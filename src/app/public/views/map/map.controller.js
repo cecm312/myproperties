@@ -26,6 +26,7 @@
       var propertyId = $state.params.id;
       if (propertyId) {
         FirebaseF.lists.properties.$loaded().then(function () {
+          var mapResized = false;
           angular.forEach(FirebaseF.lists.properties, function (property, index) {
             var active = false;
             if (property.$id == propertyId) {
@@ -34,12 +35,20 @@
             if (property.gps) {
               FirebaseF.lists.properties[index].gps.active = active;
               if (active) {
+                mapResized = true;
                 vm.lat = FirebaseF.lists.properties[index].gps.lat;
                 vm.lng = FirebaseF.lists.properties[index].gps.lng;
-                vm.map.setZoom(16)
+                vm.map.setZoom(13);
+                google.maps.event.trigger(vm.map, 'resize');
               }
             }
           });
+          if (!mapResized) {
+            vm.lat = $scope.$parent.main.mylocation.lat;
+            vm.lng = $scope.$parent.main.mylocation.lng;
+            vm.map.setZoom(13);
+            google.maps.event.trigger(vm.map, 'resize');
+          }
         });
       }
     }
@@ -55,10 +64,10 @@
         } else {
           var watcherLocation = $scope.$parent.$watch("main.mylocation", function (location) {
             if (location) {
-              console.log(location);
-              vm.lat = $scope.$parent.main.mylocation.lat;
-              vm.lng = $scope.$parent.main.mylocation.lng;
+              vm.lat = location.lat;
+              vm.lng = location.lng;
               watcherLocation();
+              google.maps.event.trigger(vm.map, 'resize');
             }
           }, true);
         }

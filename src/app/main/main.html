@@ -9,6 +9,11 @@
       </h2>
       <span flex></span>
       <div flex="nogrow">
+        <div flex="nogrow" class="langSection">
+          <md-button ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
+            <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
+          </md-button>
+        </div>
         <md-button ng-click="main.AuthF.$signOut()">
           <md-icon>exit_to_app </md-icon>
         </md-button>

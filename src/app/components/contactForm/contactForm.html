@@ -1,36 +1,36 @@
-<div layout-padding>
-  <form ng-submit="sendMail(contact)">
-    <h3>Contactanos</h3>
+<div layout-padding class="contactForm">
+  <form name="contactForm" ng-submit="sendMail(contact,contactForm)"  ng-disabled='readMode'>
+    <h3>{{'components.contactForm.title'|translate}}</h3>
     <div layout="column">
       <div flex ng-if="subject">
         <p>
-          <strong>Quiero mas informacion acerca de: </strong>{{subject}}
+          <strong>{{'components.contactForm.wantInformation'|translate}} </strong>{{subject}}
         </p>
       </div>
       <md-input-container flex>
-        <label>Nombre</label>
+        <label>{{'components.contactForm.name'|translate}}</label>
         <input type="text" required ng-model="contact.name">
       </md-input-container>
       <md-input-container flex>
-        <label>Correo</label>
+        <label>{{'components.contactForm.email'|translate}}</label>
         <input type="email" required ng-model="contact.email">
       </md-input-container>
       <md-input-container flex>
-        <label>Telefono</label>
+        <label>{{'components.contactForm.phone'|translate}}</label>
         <input type="phone" ng-model="contact.phone">
       </md-input-container>
       <md-input-container flex ng-if="!subject">
-        <label>Asunto</label>
+        <label>{{'components.contactForm.subject'|translate}}</label>
         <input type="text" required ng-model="contact.subject">
       </md-input-container>
       <md-input-container flex>
-        <label>Mensaje</label>
+        <label>{{'components.contactForm.message'|translate}}</label>
         <textarea ng-model="contact.message" rows="5"></textarea>
       </md-input-container>
 
       <div flex layout="row" layout-align="end center">
         <span flex></span>
-        <md-button flex="nogrow" type="submit" class="md-raised md-primary">Enviar Mensaje</md-button>
+        <md-button flex="nogrow" type="submit" class="md-raised md-primary">{{'components.contactForm.sendMessage'|translate}}</md-button>
       </div>
     </div>
   </form>

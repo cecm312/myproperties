@@ -1,5 +1,5 @@
-<md-content layout="column" layout-gt-sm="row" layout-wrap>
-  <div flex="100" flex-gt-xs="60" flex-offset-gt-sm="5" layout="column">
+<md-content flex layout="column" layout-gt-sm="row" layout-padding>
+  <div flex="nogrow" flex-gt-xs="60" layout="column">
     <div id="slideShow" flex="nogrow" ng-if="publicPropertyCtrl.property.images">
       <md-button class="md-fab next" aria-label="More" ng-click="publicPropertyCtrl.goSlide()">
         <md-icon>keyboard_arrow_right</md-icon>
@@ -7,12 +7,10 @@
       <md-button class="md-fab prev" aria-label="More" ng-click="publicPropertyCtrl.goSlide('prev')">
         <md-icon>keyboard_arrow_left</md-icon>
       </md-button>
-
-
       <img style="object-fit: contain;width: 100%;max-height: 600px;margin:auto" ng-repeat="image in publicPropertyCtrl.property.images"
         ng-if="image.show" ng-src="{{image.url}}">
     </div>
-    <div flex layout-padding>
+    <div  flex="nogrow">
       <h2>Informacion de la propiedad</h2>
       <h3>Ubicacion</h3>
       <p>{{publicPropertyCtrl.property[main.lang].location}}</p>
@@ -29,7 +27,7 @@
       <p>{{main.contactInformation.email}}</p>
     </div>
   </div>
-  <div flex="100" flex-gt-sm="30" layout-padding>
+  <div flex="nogrow" flex-gt-sm="30" layout-padding>
     <contact-form subject="{{publicPropertyCtrl.property[main.lang].location}}"></contact-form>
   </div>
 

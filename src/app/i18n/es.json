@@ -8,5 +8,29 @@
         "inputPassword":"Ingrese su contraseña",
         "invalidPassword":"Por favor ingrese su contraseña",
         "buttonLogin":"Acceder"
+    },
+    "menu":{
+        "map":"Mapa",
+        "list":"Propiedades",
+        "about":"Nosotros",
+        "contact":"Contactanos"
+    },
+    "pages":{
+        "list":{
+            "title":"Lista de propiedades"
+        }
+    },
+    "components":{
+        "contactForm":{
+            "title":"Contactanos",
+            "wantInformation":"Quiero mas informacion acerca de:",
+            "name":"Nombre",
+            "email":"Correo",
+            "phone":"Telefono",
+            "subject":"Asunto",
+            "message":"Mensaje",
+            "sendMessage":"Enviar Mensaje",
+            "successEmail":"Mensaje Enviado"
+        }
     }
 }

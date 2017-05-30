@@ -16,7 +16,7 @@
           <tr md-row md-select="property" md-select-id="$id" md-auto-select ng-repeat="property in main.FBF.lists.properties">
             <td md-cell>{{property[main.lang].location}}</td>
             <td md-cell>{{property[main.lang].closerReference}}</td>
-            <td md-cell>{{property[main.lang].meters|number:2}} m2</td>
+            <td md-cell>{{property.meters|number:2}} m2</td>
           </tr>
         </tbody>
       </table>

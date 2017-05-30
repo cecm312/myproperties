@@ -1,6 +1,6 @@
-<md-content layout="column" flex layout-padding="layout-padding" layout-fill>
+<md-content layout="column" flex >
   <div flex="nogrow" layout="row" layout-align="start center">
-    <h1 flex="nogrow">Lista de propiedades</h1>
+    <h1 flex="nogrow">{{'pages.list.title'|translate}}</h1>
   </div>
   <div flex class="content-card">
     <md-card ng-repeat="property in main.FBF.lists.properties">
@@ -10,7 +10,7 @@
             <div flex>
               <h3>{{property[main.lang].location}}</h3>
               <p>{{property[main.lang].closerReference}}</p>
-              <h4>{{property[main.lang].meters|number:2}} m2</h4>
+              <h4>{{property.meters|number:2}} m2</h4>
             </div>
             <div flex="nogrow" layout="row">
               <md-button class="md-raised md-primary" ui-sref="home.properties.detail({ property: property,propertyId:property.$id})" flex  aria-label="Detalles">

@@ -1,21 +1,60 @@
-<div layout="column" ng-cloak="ng-cloak" layout-fill>
+<div ng-cloak="ng-cloak" flex layout="column">
   <!--<div flex="nogrow" layout-wrap class="md-primary-700">
     <div ncy-breadcrumb></div>
   </div>-->
-  <md-toolbar flex="nogrow" class="md-hue-2">
-    <div class="md-toolbar-tools">
-      <h2 flex="nogrow">
-        <span>Propiedades Puerto Morelos</span>
+  <md-toolbar class="md-hue-2" layout="column">
+    <div flex hide-gt-xs layout="row" layout-align="start center">
+      <div flex="nogrow" class="langSection" layout="row">
+        <md-button flex ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
+          <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
+        </md-button>
+      </div>
+      <span flex></span>
+      <md-button flex="nogrow" ng-click="main.toggleLeft()">
+        <md-icon>view_headline </md-icon>
+      </md-button>
+    </div>
+
+    <div flex class="md-toolbar-tools" hide-xs>
+      <div flex="10">
+        <img style="object-fit: contain;width: 100%;max-height: 600px;margin:10px" src="http://www.clipartbest.com/cliparts/7Ta/pzB/7TapzBzbc.png">
+      </div>
+      <h2>
+        <span ng-bind-html="main.F.siteName"></span>
       </h2>
       <span flex></span>
-      <section flex layout="row" layout-align="left center">
-        <md-button ui-sref="home.map">Mapa</md-button>
-        <md-button ui-sref="home.properties">Listado</md-button>
-        <md-button ui-sref="home.about">Nosotros</md-button>
-        <md-button ui-sref="home.contact">Contactanos</md-button>
-      </section>
+      <div flex="nogrow" layout="column" layout-align="start end">
+        <div flex="nogrow" class="langSection">
+          <md-button ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
+            <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
+          </md-button>
+        </div>
+        <section flex="nogrow" layout="row" layout-align="left center">
+          <md-button ng-repeat="item in main.F.publicMenu" ui-sref="{{item.state}}">{{'menu.'+item.name | translate}}</md-button>
+        </section>
+      </div>
+
     </div>
   </md-toolbar>
+  <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+    <md-toolbar class="md-hue-2" layout="row">
+      <div flex="15">
+        <img style="object-fit: contain;width: 100%;max-height: 600px;margin:10px" src="http://www.clipartbest.com/cliparts/7Ta/pzB/7TapzBzbc.png">
+      </div>
+      <div flex>
+        <span ng-bind-html="main.F.siteName"></span>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list ng-cloak>
+        <md-list-item ng-repeat="item in main.F.publicMenu" ui-sref="{{item.state}}" ng-click="main.toggleLeft()">
+          <md-icon>{{item.icon?item.icon:'label'}}</md-icon>
+          <p>{{'menu.'+item.name | translate}}</p>
+          <md-icon>keyboard_arrow_right </md-icon>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
   <!--<md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
     <md-toolbar class="md-theme-indigo">
       <h1 class="md-toolbar-tools">Menu</h1>
@@ -30,5 +69,5 @@
       </md-list>
     </md-content>
   </md-sidenav>-->
-  <div flex ui-view="content" layout-fill></div>
+  <div ui-view="content" flex layout="row"></div>
 </div>
