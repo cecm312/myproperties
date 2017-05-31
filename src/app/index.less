@@ -2,77 +2,95 @@
  *  Do not remove the comments below. It's the markers used by wiredep to inject
  *  less dependencies when defined in the bower.json of your dependencies
  */
+
 // bower:less
 // endbower
-
 @import url(//fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
-
 @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'), url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'), url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 html {
-  font-family: 'Roboto Slab', serif;
-  width: 100%!important;
-  min-height: 100%!important;
+    font-family: 'Roboto Slab', serif;
+    width: 100%!important;
+    min-height: 100%!important;
 }
 
-html, body {
-  width: 100%!important;
-  min-width:100%!important;
+html,
+body {
+    width: 100%!important;
+    min-width: 100%!important;
     min-height: 100%;
     height: auto!important;
 }
 
-.md-toolbar-tools{
-  height: auto!important;
-  max-height: none!important;
+.md-toolbar-tools {
+    height: auto!important;
+    max-height: none!important;
 }
 
-.langSection{
-  a{
-    font-size: 8px!important;
-    cursor: pointer;
-  }
-}
-
-
-div{
-  #slideShow{
-    position:relative;
-    .md-button{
-      position:absolute;
+.langSection {
+    a {
+        font-size: 8px!important;
+        cursor: pointer;
     }
-    .md-button.prev{
-        left:0;
-        top:50%;
-    
-    }
-    .md-button.next{
-        right:0;
-        top:50%;
-    }
-  }
 }
 
-.contactForm{
-  border:solid 5px #283593;
-  border-radius: 25px;
+div {
+    #slideShow {
+        position: relative;
+        .md-button {
+            position: absolute;
+        }
+        .md-button.prev {
+            left: 0;
+            top: 49%;
+        }
+        .md-button.next {
+            right: 0;
+            top: 49%;
+        }
+    }
 }
 
+.contactForm {
+    border: solid 5px #283593;
+    border-radius: 25px;
+}
+
+.sliderImage {
+    object-fit: contain;
+    width: 100%;
+    margin: auto;
+}
+
+@media (min-width: 961px) {
+    .sliderImage {
+        height: 500px;
+    }
+}
+@media (max-width: 960px) and (min-width:301px) {
+    .sliderImage {
+        height: 300px;
+    }
+}
+
+@media (max-width: 300px) {
+    .sliderImage {
+        height: 200px;
+    }
+}
 
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your less files automatically
  */
+
 // injector
 // endinjector
