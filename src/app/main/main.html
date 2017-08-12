@@ -20,13 +20,13 @@
       </div>
     </div>
   </md-toolbar>
-  <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+  <md-sidenav class="md-sidenav-left" md-component-id="left"md-whiteframe="4">
     <md-toolbar class="md-theme-indigo">
       <h1 class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
     <md-content>
       <md-list ng-cloak>
-        <md-list-item ng-repeat="item in main.F.menu" ng-click="main.F.go(item.state)">
+        <md-list-item ng-repeat="item in main.F.menu" ng-click="main.F.go(item.state);main.toggleLeft()">
           <md-icon>{{item.icon?item.icon:'label'}}</md-icon>
           <p>{{item.name}}</p>
           <md-icon>keyboard_arrow_right </md-icon>

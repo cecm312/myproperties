@@ -7,7 +7,7 @@
           {{'pages.map.location'|translate}}: {{mapCtrl.propertySelected[main.lang].location}}<br/>
           {{'pages.map.nearestReference'|translate}}: {{mapCtrl.propertySelected[main.lang].closerReference}}<br/>
           {{'pages.map.size'|translate}}: {{mapCtrl.propertySelected.meters}} m2<br/>
-          <a ui-sref="home.properties.detail({ property: mapCtrl.propertySelected,propertyId:mapCtrl.propertySelected.$id})">Mas detalles</a>
+          <a ui-sref="home.properties.detail({ property: mapCtrl.propertySelected,propertyId:mapCtrl.propertySelected.$id})">{{'pages.map.moreDetails'|translate}}</a>
         </div>
       </info-window>
     </ng-map>

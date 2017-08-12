@@ -236,7 +236,7 @@
 
     function showPosition(position) {
       $log.log(position);
-      vm.mylocation = new google.maps.LatLng(position.coords.latitude, position.coords.latitude);
+      vm.mylocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     }
 
     function init() {

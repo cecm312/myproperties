@@ -32,7 +32,8 @@
     "map": {
       "location": "Location",
       "nearestReference": "Nearest Reference",
-      "size": "Size"
+      "size": "Size",
+      "moreDetails":"More details"
     }
   },
   "components": {

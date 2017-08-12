@@ -32,7 +32,8 @@
     "map": {
       "location": "Ubicacion",
       "nearestReference": "Referencia mas cercana",
-      "size": "Tamaño"
+      "size": "Tamaño",
+      "moreDetails":"Mas detalles"
     }
   },
   "components": {
