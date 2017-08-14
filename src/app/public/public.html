@@ -2,7 +2,7 @@
   <!--<div flex="nogrow" layout-wrap class="md-primary-700">
     <div ncy-breadcrumb></div>
   </div>-->
-  <md-toolbar class="md-hue-2" layout="column">
+  <md-toolbar class="md-hue-2 image-background" layout="column">
     <div flex hide-gt-xs layout="row" layout-align="start center">
       <div flex="nogrow" class="langSection" layout="row">
         <md-button flex ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
@@ -15,25 +15,27 @@
       </md-button>
     </div>
 
-    <div flex class="md-toolbar-tools" hide-xs>
-      <div flex="10">
-        <img style="object-fit: contain;width: 100%;max-height: 600px;margin:10px" src="http://www.clipartbest.com/cliparts/7Ta/pzB/7TapzBzbc.png">
+    <div flex class="no-padding" hide-xs layout="column">
+      <div flex="nogrow">
+        <img src="assets/images/br_top.png" style="min-width: 100%!important;width:100%!important">
       </div>
-      <h2>
-        <span ng-bind-html="main.F.siteName"></span>
-      </h2>
-      <span flex></span>
-      <div flex="nogrow" layout="column" layout-align="start end">
-        <div flex="nogrow" class="langSection">
-          <md-button ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
-            <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
-          </md-button>
+      <section class="menu-container" flex="nogrow" layout="row" layout-align="space-between start">
+        <div flex class="menu-item-container" layout="row" ng-repeat="item in main.F.publicMenu">
+          <a class="menu-item" ui-sref-active="active" ui-sref="{{item.state}}" flex>{{'menu.'+item.name | translate}}</a>
         </div>
-        <section flex="nogrow" layout="row" layout-align="left center">
-          <md-button ng-repeat="item in main.F.publicMenu" ui-sref="{{item.state}}">{{'menu.'+item.name | translate}}</md-button>
-        </section>
-      </div>
+      </section>
+      <!-- <div flex="nogrow" class="langSection">
+        <md-button ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
+          <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
+        </md-button>
+      </div> -->
 
+      <!-- <div flex="10">
+        <img style="object-fit: contain;width: 100%;max-height: 600px;margin:10px" src="http://www.clipartbest.com/cliparts/7Ta/pzB/7TapzBzbc.png">
+      </div> -->
+      <!-- <h2>
+          <span ng-bind-html="main.F.siteName"></span>
+        </h2> -->
     </div>
   </md-toolbar>
   <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
@@ -69,5 +71,7 @@
       </md-list>
     </md-content>
   </md-sidenav>-->
-  <div ui-view="content" flex layout="row"></div>
+  <div ui-view="content" class="image-background" flex layout="row"></div>
+  <div flex="nogrow" class="footer">
+  </div>
 </div>

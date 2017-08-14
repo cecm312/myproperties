@@ -18,11 +18,26 @@
     $locationProvider.html5Mode(true);
     $stateProvider
       .state('home', {
-        abstract: true,
         url: '/',
+        abstract: true,
         templateUrl: 'app/public/public.html',
         controller: 'PublicController',
         controllerAs: 'main',
+        ncyBreadcrumb: {
+          label: 'Inicio'
+        }
+      })
+      .state('home.home', {
+        url: 'home',
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/home/home.html';
+            },
+            controller: 'HomeController',
+            controllerAs: 'homeCtrl'
+          }
+        },
         ncyBreadcrumb: {
           label: 'Inicio'
         }
@@ -40,6 +55,36 @@
         },
         ncyBreadcrumb: {
           label: 'Mapa'
+        }
+      })
+      .state('home.about', {
+        url: 'about',
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/about/about.html';
+            },
+            controller: 'AboutController',
+            controllerAs: 'aboutCtrl'
+          }
+        },
+        ncyBreadcrumb: {
+          label: 'Nosotros'
+        }
+      })
+      .state('home.faq', {
+        url: 'faq',
+        views: {
+          'content@home': {
+            templateUrl: function () {
+              return 'app/public/views/faq/faq.html';
+            },
+            controller: 'FaqController',
+            controllerAs: 'faqCtrl'
+          }
+        },
+        ncyBreadcrumb: {
+          label: 'FAQ'
         }
       })
       .state('home.properties', {

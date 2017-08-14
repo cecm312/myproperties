@@ -38,6 +38,9 @@
         state: "admin.properties"
       }],
       publicMenu: [{
+        state: "home.home",
+        name: "home"
+      }, {
         state: "home.map",
         name: "map"
       }, {
@@ -46,6 +49,9 @@
       }, {
         state: "home.about",
         name: "about"
+      }, {
+        state: "home.faq",
+        name: "faq"
       }, {
         state: "home.contact",
         name: "contact"
