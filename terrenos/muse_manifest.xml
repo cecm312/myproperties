@@ -1,0 +1,58 @@
+<manifest alg="2" build="2015.0.0.309" opt="false" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" domain="www.terrenos.com" resolutions="1x" timestamp="1500135770050">
+  <folder name="css">
+    <file name="site_global.css" crc="4052507572"/>
+    <file name="master_a-p_g_-maestra.css" crc="57268358" ref="mapa:nosotros:index:faq:propiedades:contactanos"/>
+    <file name="mapa.css" crc="128362472" ref="mapa"/>
+    <file name="nosotros.css" crc="128362472" ref="nosotros"/>
+    <file name="index.css" crc="3815819772" ref="index"/>
+    <file name="faq.css" crc="128362472" ref="faq"/>
+    <file name="propiedades.css" crc="3875227819" ref="propiedades"/>
+    <file name="contactanos.css" crc="407642806" ref="contactanos"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="4255413929" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="museutils.js" crc="183364071" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="jquery.musemenu.js" crc="3957776250" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="webpro.js" crc="3803554875" ref="index:propiedades:contactanos"/>
+    <file name="musewpslideshow.js" crc="242596657" ref="index"/>
+    <file name="jquery.museoverlay.js" crc="493285861" ref="index"/>
+    <file name="touchswipe.js" crc="4038331989" ref="index"/>
+    <file name="jquery.watch.js" crc="71412426" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="html5shiv.js" crc="4241844378" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="form_check.php" crc="277267350" ref="propiedades:contactanos"/>
+    <file name="form_throttle.php" crc="3908387251" ref="propiedades:contactanos"/>
+    <file name="form_process.php" crc="24249335" ref="propiedades:contactanos"/>
+    <file name="form-u487.php" crc="289587767" ref="propiedades"/>
+    <file name="form-u399.php" crc="4270129287" ref="contactanos"/>
+  </folder>
+  <folder name="images">
+    <file name="br_bk_med_02.jpg" crc="3983197394" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="br_top.png" crc="337099509" seo="true" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="w01.jpg" crc="3758889654" seo="true" ref="index"/>
+    <file name="blank.gif" crc="4208392903" ref="index"/>
+    <file name="w02.jpg" crc="4267945640" seo="true" ref="index"/>
+    <file name="w03.jpg" crc="351309504" seo="true" ref="index"/>
+    <file name="w04.jpg" crc="301501074" seo="true" ref="index"/>
+    <file name="loading.gif" crc="3815509949" ref="index"/>
+    <file name="br_bot.png" crc="467142153" seo="true" ref="index:mapa:propiedades:nosotros:faq:contactanos"/>
+    <file name="u497-17.png" crc="4209183206" ref="propiedades"/>
+    <file name="u497-17-r.png" crc="339290586" ref="propiedades"/>
+    <file name="u497-17-m.png" crc="3803033598" ref="propiedades"/>
+    <file name="u497-17-fs.png" crc="38574076" ref="propiedades"/>
+    <file name="prop_im_01.jpg" crc="3906667178" seo="true" ref="propiedades"/>
+    <file name="ico_ubica.jpg" crc="267098732" seo="true" ref="propiedades"/>
+    <file name="ico_info.jpg" crc="529284901" seo="true" ref="propiedades"/>
+    <file name="prop_im_02.jpg" crc="120943031" seo="true" ref="propiedades"/>
+    <file name="br_im_cont.jpg" crc="3970752387" seo="true" ref="contactanos"/>
+    <file name="u409-17.png" crc="3840143249" ref="contactanos"/>
+    <file name="u409-17-r.png" crc="4029358951" ref="contactanos"/>
+    <file name="u409-17-m.png" crc="4261805374" ref="contactanos"/>
+    <file name="u409-17-fs.png" crc="3759206273" ref="contactanos"/>
+  </folder>
+  <file name="index.html" crc="3812583675" seo="true" mt="1500135687645" redirect="true"/>
+  <file name="mapa.html" crc="3900412971" seo="true" mt="1500135352097" redirect="true"/>
+  <file name="propiedades.html" crc="3909318876" seo="true" mt="1500135352097" redirect="true"/>
+  <file name="nosotros.html" crc="446914607" seo="true" mt="1500135352097" redirect="true"/>
+  <file name="faq.html" crc="170525453" seo="true" mt="1500135352097" redirect="true"/>
+  <file name="contactanos.html" crc="4077917937" seo="true" mt="1500135352097" redirect="true"/>
+</manifest>

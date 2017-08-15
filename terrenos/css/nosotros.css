@@ -1,0 +1,323 @@
+.version.nosotros /* version checker */
+{
+	color: #000007;
+	background-color: #A6A7E8;
+}
+
+.html
+{
+	background-color: #000000;
+}
+
+#page
+{
+	z-index: 1;
+	width: 960px;
+	min-height: 499.95000000000005px;
+	border-style: none;
+	border-color: #000000;
+	padding-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	background: transparent url("../images/br_bk_med_02.jpg") repeat center top;
+}
+
+#page_position_content
+{
+	margin-top: -1px;
+	margin-bottom: -99px;
+	width: 0.01px;
+}
+
+#u102
+{
+	z-index: 2;
+	width: 960px;
+}
+
+#menuu238
+{
+	z-index: 6;
+	width: 960px;
+	margin-top: 2px;
+}
+
+#u239
+{
+	width: 158px;
+	min-height: 25px;
+	margin-right: -10000px;
+}
+
+#u240
+{
+	width: 158px;
+	padding-bottom: 11px;
+}
+
+#u240:hover
+{
+	width: 158px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u242-4
+{
+	width: 158px;
+	min-height: 14px;
+	margin-right: -10000px;
+	top: 5px;
+}
+
+#u240:hover #u242-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 158px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u281
+{
+	width: 158px;
+	min-height: 25px;
+	margin-right: -10000px;
+	left: 160px;
+}
+
+#u282
+{
+	width: 158px;
+	padding-bottom: 11px;
+}
+
+#u240.MuseMenuActive,#u282:hover
+{
+	width: 158px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u285-4
+{
+	width: 158px;
+	min-height: 14px;
+	margin-right: -10000px;
+	top: 5px;
+}
+
+#u240.MuseMenuActive #u242-4,#u282:hover #u285-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 158px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u288
+{
+	width: 158px;
+	min-height: 25px;
+	margin-right: -10000px;
+	left: 320px;
+}
+
+#u289
+{
+	width: 158px;
+	padding-bottom: 11px;
+}
+
+#u282.MuseMenuActive,#u289:hover
+{
+	width: 158px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u292-4
+{
+	width: 158px;
+	min-height: 14px;
+	margin-right: -10000px;
+	top: 5px;
+}
+
+#u282.MuseMenuActive #u285-4,#u289:hover #u292-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 158px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u295
+{
+	width: 158px;
+	min-height: 25px;
+	margin-right: -10000px;
+	left: 480px;
+}
+
+#u298
+{
+	width: 158px;
+	padding-bottom: 11px;
+}
+
+#u289.MuseMenuActive,#u298:hover
+{
+	width: 158px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u298.MuseMenuActive
+{
+	width: 158px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u301-4
+{
+	width: 158px;
+	min-height: 14px;
+	margin-right: -10000px;
+	top: 5px;
+}
+
+#u289.MuseMenuActive #u292-4,#u298:hover #u301-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 158px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u298.MuseMenuActive #u301-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 158px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u302
+{
+	width: 159px;
+	min-height: 25px;
+	margin-right: -10000px;
+	left: 640px;
+}
+
+#u303
+{
+	width: 159px;
+	padding-bottom: 11px;
+}
+
+#u303:hover
+{
+	width: 159px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u305-4
+{
+	width: 159px;
+	min-height: 14px;
+	margin-right: -10000px;
+	top: 5px;
+}
+
+#u303:hover #u305-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 159px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u309
+{
+	width: 159px;
+	min-height: 25px;
+	margin-right: -10000px;
+	left: 801px;
+}
+
+#u310
+{
+	width: 159px;
+	padding-bottom: 11px;
+}
+
+#u303.MuseMenuActive,#u310:hover
+{
+	width: 159px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u310.MuseMenuActive
+{
+	width: 159px;
+	min-height: 0px;
+	margin: 0px;
+}
+
+#u312-4
+{
+	width: 159px;
+	min-height: 14px;
+	margin-right: -10000px;
+	top: 5px;
+}
+
+#u303.MuseMenuActive #u305-4,#u310:hover #u312-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 159px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u310.MuseMenuActive #u312-4
+{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	min-height: 14px;
+	width: 159px;
+	margin: 0px -10000px 0px 0px;
+}
+
+#u114
+{
+	z-index: 4;
+	width: 960px;
+	margin-top: 342px;
+}
+
+body
+{
+	position: relative;
+	min-width: 960px;
+	padding-top: 1px;
+	padding-bottom: 199px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+
