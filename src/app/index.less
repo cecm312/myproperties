@@ -58,11 +58,6 @@ div {
     }
 }
 
-.contactForm {
-    border: solid 5px #283593;
-    border-radius: 25px;
-}
-
 .sliderImage {
     object-fit: contain;
     width: 100%;
@@ -138,6 +133,94 @@ div {
 
 .transparent {
     background-color: transparent!important;
+}
+
+hr {
+    border-top: 2px solid #5B2D1F;
+    color: #5B2D1F;
+    background-color: #5B2D1F;
+    -webkit-tap-highlight-color: #5B2D1F;
+}
+
+h1,
+h2,
+h3 {
+    color: #5B2D1F;
+}
+
+p {
+    color: #5B2D1F;
+    font-style: italic;
+}
+
+ul {
+    li {
+        color: #5B2D1F;
+        font-style: italic;
+    }
+}
+
+.contactPage {
+    h3 {
+        text-transform: uppercase;
+    }
+    div {
+        padding-top: 1%;
+        .md-button {
+            font-size: 12px!important;
+        }
+        @media (min-width: 915px) {
+            label {
+                width: 20%;
+                float: left;
+                text-align: right;
+            }
+            input,
+            textarea {
+                width: 77%;
+            }
+        }
+        @media (max-width: 914px) {
+            label {
+                width: 100%;
+            }
+            input,
+            textarea {
+                width: 100%;
+            }
+        }
+        label {
+            color: #5B2D1F;
+            font-weight: bold;
+            font-size: 13px;
+            display: block;
+            padding-right: 10px;
+        }
+        input {
+            &::-webkit-input-placeholder {
+                padding-left: .5em;
+                font-style: italic;
+                font-size: 12px;
+            }
+            &::-moz-placeholder {
+                padding-left: .5em;
+                font-style: italic;
+                font-size: 12px;
+            }
+        }
+        textarea {
+            &::-webkit-input-placeholder {
+                padding-left: .5em;
+                font-style: italic;
+                font-size: 12px;
+            }
+            &::-moz-placeholder {
+                padding-left: .5em;
+                font-style: italic;
+                font-size: 12px;
+            }
+        }
+    }
 }
 
 

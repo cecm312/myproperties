@@ -1,10 +1,5 @@
-<md-content class="transparent" layout="column" flex layout-padding>
-  <div flex>
-    <ui-carousel ng-if="homeCtrl.showSlide" slides="homeCtrl.slides" slides-to-show="1" slides-to-scroll="1" dots="true" autoplay="true"
-      autoplay-speed="2000">
-      <carousel-item>
-        <div class="image"><img ng-src="{{ item.src }}"></div>
-      </carousel-item>
-    </ui-carousel>
+<md-content class="transparent" flex layout-padding layout="column">
+  <div flex="nogrow">
+    <slider images="homeCtrl.slides"></slider>
   </div>
 </md-content>

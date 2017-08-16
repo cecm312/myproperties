@@ -1,36 +1,37 @@
 <div layout-padding class="contactForm">
-  <form name="contactForm" ng-submit="sendMail(contact,contactForm)"  ng-disabled='readMode'>
+  <form name="contactForm" ng-submit="sendMail(contact,contactForm)"  ng-disabled='readMode' class="contactPage">
     <h3>{{'components.contactForm.title'|translate}}</h3>
+    <hr>
     <div layout="column">
       <div flex ng-if="subject">
         <p>
           <strong>{{'components.contactForm.wantInformation'|translate}} </strong>{{subject}}
         </p>
       </div>
-      <md-input-container flex>
-        <label>{{'components.contactForm.name'|translate}}</label>
-        <input type="text" required ng-model="contact.name">
-      </md-input-container>
-      <md-input-container flex>
-        <label>{{'components.contactForm.email'|translate}}</label>
-        <input type="email" required ng-model="contact.email">
-      </md-input-container>
-      <md-input-container flex>
-        <label>{{'components.contactForm.phone'|translate}}</label>
-        <input type="phone" ng-model="contact.phone">
-      </md-input-container>
-      <md-input-container flex ng-if="!subject">
-        <label>{{'components.contactForm.subject'|translate}}</label>
-        <input type="text" required ng-model="contact.subject">
-      </md-input-container>
-      <md-input-container flex>
-        <label>{{'components.contactForm.message'|translate}}</label>
-        <textarea ng-model="contact.message" rows="5"></textarea>
-      </md-input-container>
+      <div flex>
+        <label>{{'components.contactForm.name'|translate}}:</label>
+        <input type="text" required ng-model="contact.name" placeholder="Nombre de contacto">
+      </div>
+      <div flex>
+        <label>{{'components.contactForm.email'|translate}}:</label>
+        <input type="email" required ng-model="contact.email" placeholder="Correo del contacto">
+      </div>
+      <div flex>
+        <label>{{'components.contactForm.phone'|translate}}:</label>
+        <input type="phone" ng-model="contact.phone" placeholder="Numero de telefono">
+      </div>
+      <div flex ng-if="!subject">
+        <label>{{'components.contactForm.subject'|translate}}:</label>
+        <input type="text" required ng-model="contact.subject" placeholder="Asunto">
+      </div>
+      <div flex>
+        <label>{{'components.contactForm.message'|translate}}:</label>
+        <textarea ng-model="contact.message" rows="5" placeholder="Mensaje"></textarea>
+      </div>
 
       <div flex layout="row" layout-align="end center">
         <span flex></span>
-        <md-button flex="nogrow" type="submit" class="md-raised md-primary">{{'components.contactForm.sendMessage'|translate}}</md-button>
+        <md-button flex="nogrow" type="submit" class="md-raised">{{'components.contactForm.sendMessage'|translate}}</md-button>
       </div>
     </div>
   </form>
