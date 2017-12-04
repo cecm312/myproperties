@@ -72,21 +72,21 @@
           label: 'Nosotros'
         }
       })
-      .state('home.faq', {
-        url: 'faq',
-        views: {
-          'content@home': {
-            templateUrl: function () {
-              return 'app/public/views/faq/faq.html';
-            },
-            controller: 'FaqController',
-            controllerAs: 'faqCtrl'
-          }
-        },
-        ncyBreadcrumb: {
-          label: 'FAQ'
-        }
-      })
+      // .state('home.faq', {
+      //   url: 'faq',
+      //   views: {
+      //     'content@home': {
+      //       templateUrl: function () {
+      //         return 'app/public/views/faq/faq.html';
+      //       },
+      //       controller: 'FaqController',
+      //       controllerAs: 'faqCtrl'
+      //     }
+      //   },
+      //   ncyBreadcrumb: {
+      //     label: 'FAQ'
+      //   }
+      // })
       .state('home.properties', {
         url: 'properties',
         views: {

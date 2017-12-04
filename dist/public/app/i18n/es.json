@@ -13,7 +13,8 @@
     "map": "Mapa",
     "list": "Propiedades",
     "about": "Nosotros",
-    "contact": "Contactanos"
+    "contact": "Contactanos",
+    "home":"Inicio"
   },
   "pages": {
     "list": {

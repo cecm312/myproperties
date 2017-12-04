@@ -13,7 +13,8 @@
     "map": "Map",
     "list": "Properties",
     "about": "About Us",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "home": "Inicio"
   },
   "pages": {
     "list": {
@@ -24,16 +25,16 @@
       "location": "Location",
       "nearestReference": "Nearest Reference",
       "squareMeters": "Square Meters",
-      "contactInformation":"Contact Information",
-      "contact":"Name",
-      "phone":"Phone",
-      "email":"Email"
+      "contactInformation": "Contact Information",
+      "contact": "Name",
+      "phone": "Phone",
+      "email": "Email"
     },
     "map": {
       "location": "Location",
       "nearestReference": "Nearest Reference",
       "size": "Size",
-      "moreDetails":"More details"
+      "moreDetails": "More details"
     }
   },
   "components": {

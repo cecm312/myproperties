@@ -49,10 +49,12 @@
       }, {
         state: "home.about",
         name: "about"
-      }, {
-        state: "home.faq",
-        name: "faq"
-      }, {
+      }, 
+      // {
+      //   state: "home.faq",
+      //   name: "faq"
+      // }, 
+      {
         state: "home.contact",
         name: "contact"
       }]
