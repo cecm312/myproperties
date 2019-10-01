@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig,$qProvider) {
+  function config($logProvider, toastrConfig, $qProvider, $mdThemingProvider) {
     // Enable log
 
     $qProvider.errorOnUnhandledRejections(false);
@@ -18,6 +18,7 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
+    $mdThemingProvider.theme('default').primaryPalette('brown').accentPalette('orange');
   }
 
 })();

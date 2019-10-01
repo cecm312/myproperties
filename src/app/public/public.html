@@ -5,7 +5,7 @@
   <md-toolbar class="md-hue-2 image-background" layout="column">
     <div flex hide-gt-xs layout="row" layout-align="start center">
       <div flex="nogrow" class="langSection" layout="row">
-        <md-button flex ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
+        <md-button style="width:50px" flex ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
           <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
         </md-button>
       </div>
@@ -18,6 +18,11 @@
     <div flex class="no-padding" hide-xs layout="column">
       <div flex="nogrow">
         <img src="assets/images/br_top.png" style="min-width: 100%!important;width:100%!important">
+        <div style="position:absolute;right:100px;bottom:55px">
+          <md-button style="width:50px" flex ng-repeat="lang in main.F.langs" class="md-icon-button" aria-label="lang.displayName" ng-click="main.changeLanguage(lang.name)">
+            <img style="object-fit: contain;width: 100%;max-height: 600px" ng-src="{{lang.img}}">
+          </md-button>
+        </div>
       </div>
       <section class="menu-container" flex="nogrow" layout="row" layout-align="space-between start">
         <div flex class="menu-item-container" layout="row" ng-repeat="item in main.F.publicMenu">

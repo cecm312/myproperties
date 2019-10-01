@@ -125,9 +125,8 @@ div {
 }
 
 .footer {
-    background-repeat: repeat-y;
+    background-color: #502418;
     background-size: 100%;
-    background-image: url("../assets/images/br_bot.png");
     min-height: 50px;
 }
 
@@ -169,7 +168,7 @@ ul {
         .md-button {
             font-size: 12px!important;
         }
-        @media (min-width: 915px) {
+        @media (min-width: 960px) {
             label {
                 width: 20%;
                 float: left;
@@ -180,7 +179,7 @@ ul {
                 width: 77%;
             }
         }
-        @media (max-width: 914px) {
+        @media (max-width: 959px) {
             label {
                 width: 100%;
             }
@@ -195,6 +194,11 @@ ul {
             font-size: 13px;
             display: block;
             padding-right: 10px;
+        }
+        p {
+            color: #5B2D1F;
+            text-align: justify;
+            font-size: 13px;
         }
         input {
             &::-webkit-input-placeholder {
@@ -219,6 +223,62 @@ ul {
                 font-style: italic;
                 font-size: 12px;
             }
+        }
+    }
+}
+
+.propertiesDetailsPage {
+    .location {
+        z-index: 45;
+        background-color: transparent;
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: bold;
+    }
+    h3{
+        font-weight: bold;
+    }
+    .contactInformation{
+        @media (min-width: 960px) {
+            padding-left:10px;
+        }
+        h2{
+            color: #5B2D1F;
+            font-weight: bold;
+            font-size: 18px;
+            display: block;
+            padding-right: 10px;
+        }
+        h3{
+            color: #5B2D1F;
+            font-weight: bold;
+            font-size: 15px;
+            display: block;
+            padding-right: 10px;
+        }
+        p{
+            color: #5B2D1F;
+            font-size: 15px;
+            display: block;
+            margin:0px;
+            padding-right: 10px;
+        }
+    }
+    .propertiesInformation {
+        @media (min-width: 960px) {
+           // border-right: 2px solid #5B2D1F;
+        }
+    }
+    .contactPage {
+        @media (min-width: 960px) {
+            padding-left:10px;
+        }
+        p {
+            margin: 0px;
+        }
+        div input,
+        textarea {
+            width: 100%;
         }
     }
 }

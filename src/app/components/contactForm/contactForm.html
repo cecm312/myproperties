@@ -1,7 +1,7 @@
-<div layout-padding class="contactForm">
+<div class="contactForm">
   <form name="contactForm" ng-submit="sendMail(contact,contactForm)"  ng-disabled='readMode' class="contactPage">
-    <h3>{{'components.contactForm.title'|translate}}</h3>
-    <hr>
+    <h3 ng-if="!hideHeader">{{'components.contactForm.title'|translate}}</h3>
+    <hr ng-if="!hideHeader">
     <div layout="column">
       <div flex ng-if="subject">
         <p>

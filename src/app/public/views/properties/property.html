@@ -1,54 +1,70 @@
-<md-content flex layout="column" layout-gt-sm="row" layout-padding class="transparent">
-  <div flex="nogrow" flex-gt-xs="60" layout="column">
-    <div id="slideShow" flex="nogrow" ng-if="publicPropertyCtrl.property.images">
-      <md-button class="md-fab next md-primary md-mini" aria-label="More" ng-click="publicPropertyCtrl.goSlide()">
-        <md-icon>keyboard_arrow_right</md-icon>
-      </md-button>
-      <md-button class="md-fab prev md-primary md-mini" aria-label="More" ng-click="publicPropertyCtrl.goSlide('prev')">
-        <md-icon>keyboard_arrow_left</md-icon>
-      </md-button>
-      <img class="sliderImage" ng-repeat="image in publicPropertyCtrl.property.images"
-        ng-if="image.show" ng-src="{{image.url}}">
-    </div>
+<md-content layout="row" class="transparent propertiesDetailsPage" flex layout-margin>
+  <div flex-gt-md="10"></div>
+  <div flex="100" flex-gt-md="80" layout="column">
     <div flex="nogrow">
+      <h2 class="location">{{publicPropertyCtrl.property[main.lang].location}}</h2>
+    </div>
+    <div flex="nogrow" layout="column" layout-gt-sm="row" layout-align="start start">
+      <div flex="nogrow" flex-gt-xs="70" layout="column" class="propertiesInformation">
+        <div id="slideShow" flex="nogrow" ng-if="publicPropertyCtrl.property.images">
+          <md-button class="md-fab next md-primary md-mini" aria-label="More" ng-click="publicPropertyCtrl.goSlide()">
+            <md-icon>keyboard_arrow_right</md-icon>
+          </md-button>
+          <md-button class="md-fab prev md-primary md-mini" aria-label="More" ng-click="publicPropertyCtrl.goSlide('prev')">
+            <md-icon>keyboard_arrow_left</md-icon>
+          </md-button>
+          <img class="sliderImage" ng-repeat="image in publicPropertyCtrl.property.images" ng-if="image.show" ng-src="{{image.url}}">
+        </div>
+        <div flex="nogrow" layout="column">
+          <div flex="nogrow" layout="row">
+            <div flex>
+              <h3>{{'pages.listDetail.nearestReference'|translate}}</h2>
+            </div>
+            <div flex="nogrow">
+              <md-button class=" md-raised md-primary" ui-sref="home.map({ id:publicPropertyCtrl.property.$id})" flex aria-label="Mostrar en el Mapa">
+                {{'pages.listDetail.location'|translate}}
+                <md-icon>location_on </md-icon>
+              </md-button>
+            </div>
+          </div>
+          <div flex="nogrow">
+            <p>{{publicPropertyCtrl.property[main.lang].closerReference}}</p>
+            <p class="meters">{{publicPropertyCtrl.property.meters|number:2}} m2</p>
+          </div>
 
-      <h2>{{'pages.listDetail.title'|translate}}</h2>
-      <h3>{{'pages.listDetail.location'|translate}}</h3>
-      <p>{{publicPropertyCtrl.property[main.lang].location}}</p>
-      <h3> {{'pages.listDetail.nearestReference'|translate}}</h3>
-      <p>{{publicPropertyCtrl.property[main.lang].closerReference}}</p>
-      <h3>{{'pages.listDetail.squareMeters'|translate}}</h3>
-      <p>{{publicPropertyCtrl.property.meters|number:2}} m2</p>
-      <hr>
-      <h2>{{'pages.listDetail.contactInformation'|translate}}</h2>
-      <h3>{{'pages.listDetail.contact'|translate}}</h3>
-      <p>{{main.contactInformation.name}}</p>
-      <h3>{{'pages.listDetail.phone'|translate}}</h3>
-      <p>{{main.contactInformation.phone}}</p>
-      <h3>{{'pages.listDetail.email'|translate}}</h3>
-      <p>{{main.contactInformation.email}}</p>
+          <!-- <h2>{{'pages.listDetail.title'|translate}}</h2>
+                    <h3>{{'pages.listDetail.location'|translate}}</h3>
+                    <p>{{publicPropertyCtrl.property[main.lang].location}}</p>
+                    <h3> {{'pages.listDetail.nearestReference'|translate}}</h3>
+                    <p>{{publicPropertyCtrl.property[main.lang].closerReference}}</p>
+                    <h3>{{'pages.listDetail.squareMeters'|translate}}</h3>
+                    <p>{{publicPropertyCtrl.property.meters|number:2}} m2</p>
+                    <hr>
+                    <h2>{{'pages.listDetail.contactInformation'|translate}}</h2>
+                    <h3>{{'pages.listDetail.contact'|translate}}</h3>
+                    <p>{{main.contactInformation.name}}</p>
+                    <h3>{{'pages.listDetail.phone'|translate}}</h3>
+                    <p>{{main.contactInformation.phone}}</p>
+                    <h3>{{'pages.listDetail.email'|translate}}</h3>
+                    <p>{{main.contactInformation.email}}</p> -->
+        </div>
+      </div>
+      <div flex="nogrow" flex-gt-sm="30">
+        <contact-form hide-header='true' subject="{{publicPropertyCtrl.property[main.lang].location}}"></contact-form>
+        <div class="contactInformation">
+          <hr>
+          <h2>{{'pages.listDetail.contactInformation'|translate}}</h2>
+          <h3>{{'pages.listDetail.contact'|translate}}</h3>
+          <p>{{main.contactInformation.name}}</p>
+          <h3>{{'pages.listDetail.phone'|translate}}</h3>
+          <p>{{main.contactInformation.phone}}</p>
+          <h3>{{'pages.listDetail.email'|translate}}</h3>
+          <p>{{main.contactInformation.email}}</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div flex="nogrow" flex-gt-sm="30">
-    <contact-form subject="{{publicPropertyCtrl.property[main.lang].location}}"></contact-form>
-  </div>
+  <div flex-gt-md="10"></div>
 
 
-  <!--<div flex="100" flex-gt-sm="80" flex-offset-gt-sm="10" >
-    <div id="slideShow" flex="nogrow" ng-if="publicPropertyCtrl.property.images">
-      <md-button class="md-icon-button  md-primary next" aria-label="More" ng-click="publicPropertyCtrl.goSlide()">
-        <md-icon>keyboard_arrow_right</md-icon>
-      </md-button>
-      <md-button class="md-icon-button  md-primary prev" aria-label="More" ng-click="publicPropertyCtrl.goSlide('prev')">
-        <md-icon>keyboard_arrow_left</md-icon>
-      </md-button>
-      <img style="object-fit: contain;width: 100%;max-height: 600px;margin:auto" ng-repeat="image in publicPropertyCtrl.property.images"
-        ng-if="image.show" ng-src="{{image.url}}">
-    </div>
-    <div flex>
-      <pre>
-    {{publicPropertyCtrl.property|json}}
-  </pre>
-    </div>
-  </div>-->
 </md-content>

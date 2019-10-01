@@ -10,7 +10,8 @@
     var directive = {
       restrict: "E",
       scope: {
-        subject: '@'
+        subject: '@',
+        hideHeader:'='
       },
       templateUrl: "app/components/contactForm/contactForm.html",
       controller: "ContactFormController"

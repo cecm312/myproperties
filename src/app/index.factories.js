@@ -20,12 +20,12 @@
     var obj = {
       siteName: "Propiedades <br> Puerto Morelos",
       langs: [{
-          img: "http://imagenpng.com/wp-content/uploads/2015/09/Bandera_de_M%C3%A9xico_1934-1968.png",
+          img: "assets/images/ICO_MEX.png",
           name: "es",
           displayName: "Español"
         },
         {
-          img: "http://www.banderas-mundo.es/data/flags/ultra/us.png",
+          img: "assets/images/ICO_USA.png",
           name: "en",
           displayName: "English"
         }
